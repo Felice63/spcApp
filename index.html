@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="#" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <link rel="stylesheet" href="styles.css" />
+    <title>SpeedCarma - The Municipal Speed Camera Proximity Notifier</title>
+  </head>
+  <body>
+
+    <header>
+      <section class="banner">
+        <div class="banner-main">
+          <img class="banner-logo" src="img/SpeedCamGlyph-smallest.png" alt="SpeedCarma Logo">
+          <div class="banner-text">
+            <span class="brand"><span class="brand-main">Speed</span><span class="brand-accent">Carma</span></span>
+            <span class="subtitle">What goes around, slows down.</span>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <div id="map"></div>
+    <div id="notification"></div>
+
+    <footer>
+      <div class="footer-content">
+        <span>&copy; 
+          <span id="footer-year"></span> fortedesign.ca 
+        </span>
+        &nbsp;|&nbsp;
+        <a href="https://leafletjs.com/" target="_blank" rel="noopener">LeafletJS JavaScript Library</a>
+        &nbsp;|&nbsp;
+        <a href="https://www.openstreetmap.org/" target="_blank" rel="noopener">OpenStreetMap</a>
+        <br>
+        <span>Data is provided publicly by 
+          <a href="https://www.toronto.ca/services-payments/streets-parking-transportation/road-safety/vision-zero/safety-initiatives/automated-speed-enforcement/speed-cameras/#location=&lat=&lng=&zoom=" target="_blank" rel="noopener">
+          the City of Toronto Speed & Red Light Camera Map dataset
+          </a>
+          </span>
+      </div>
+    </footer>
+
+    <!-- Leaflet JS --><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin="anonymous"></script>
+
+    <script src="main.js"></script>
+    <script>
+      // Set current year in footer
+      document.getElementById('footer-year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
