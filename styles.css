@@ -73,16 +73,6 @@ header {
   margin-left: 2px;
 }
 
-.captions {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.captions>h1 {
-    font-size: 400%;
-}
-
 #map { 
   grid-row: 2/1/3/2;
   width: 100%;
