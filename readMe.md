@@ -28,6 +28,9 @@ https://services3.arcgis.com/b9WvedVPoizGfvfD/ArcGIS/rest/services/
 - FlyOut menu with other links
 - Activate other Leaflet map features like trails etc. 
 - It would be a sub menu configure interface show trails parks etc other Toronto items from their data
+- Turn it into a Progressive Web App (PWA) so that Push Notifications can be enabled.
+- Customize the notifications - how many times they occur
+- Customize proximity
 
 ### Core Leaflet (built-in, no plugins)
 
