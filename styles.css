@@ -218,7 +218,7 @@ footer{
 
     .share-btn {
       /* align above footer area on mobile */
-      bottom: calc(13vh + 12px); 
+      bottom: calc(15vh + 12px); 
       padding: 10px 12px;
     }
 }
