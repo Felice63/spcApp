@@ -9,6 +9,15 @@ const shareBtn = document.getElementById('shareBtn');
 const menuToggle = document.getElementById('menuToggle');
 const flyoutMenu = document.getElementById('flyoutMenu');
 
+// Branded camera icon (uses project images)
+const cameraIcon = L.icon({
+  iconUrl: 'img/SpeedCamGlyph.svg',
+  iconRetinaUrl: 'img/SpeedCamGlyph.svg',
+  iconSize: [56, 'auto'],
+  iconAnchor: [28, 28], // center anchor so marker sits on exact lat/lng
+  popupAnchor: [0, -14]
+});
+
 function showNotification(msg) {
   notification.textContent = msg;
   notification.style.display = 'block';
@@ -36,7 +45,7 @@ function deg2rad(deg) {
 
 // Proximity of User to Speed Cameras triggers the notification
 function checkProximity(lat, lng) {
-  const threshold = 0.25; // km
+  const threshold = 0.125; // km
   for (const cam of cameras) {
     const dist = getDistanceFromLatLonInKm(lat, lng, cam.lat, cam.lng);
     if (dist < threshold) {
@@ -64,10 +73,7 @@ function addCameraMarkers() {
   cameras.forEach(cam => {
     const marker = L.marker([cam.lat, cam.lng], {
       title: cam.LOCATION || 'Speed Camera',
-      icon: L.divIcon({
-        className: '',
-        html: '<div style="font-size:28px;line-height:28px;display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:white;border-radius:50%;border:2px solid #d32f2f;box-shadow:0 1px 4px rgba(0,0,0,0.2);">📸</div>'
-      })
+      icon: cameraIcon
     }).addTo(map);
     const infoContent = `
       <div style="min-width:180px;">
@@ -102,12 +108,12 @@ function watchPosition() {
         map.setView([latitude, longitude]);
       } else if (map) {
         userMarker = L.marker([latitude, longitude], {
-          title: "You Are Here",
+          title: 'You are here',
           icon: L.divIcon({
             className: '',
             html: '<div style="color:green;font-size:28px;line-height:28px;display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:white;border-radius:50%;border:4px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.2);">🚘</div>'
           })
-        }).addTo(map).bindPopup('<div class="user-info-window">You Are here</div>');
+        }).addTo(map).bindPopup('<div class="user-info-window">You are here</div>');
         map.setView([latitude, longitude]);
       }
       checkProximity(latitude, longitude);

@@ -15,7 +15,7 @@ https://services3.arcgis.com/b9WvedVPoizGfvfD/ArcGIS/rest/services/COT_SPEED_CAM
 https://www.arcgis.com/apps/mapviewer/index.html?url=https://services3.arcgis.com/b9WvedVPoizGfvfD/ArcGIS/rest/services/COT_SPEED_CAMERAS/FeatureServer&source=sd
 
 
-### TO DO
+### TO ADD
 
 - FlyOut menu with other links
 - Activate other Leaflet map features like trails etc. 

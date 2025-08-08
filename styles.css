@@ -118,28 +118,36 @@ header {
   transform: translateY(-1px); 
 }
 
+/* Expanded state: turn the green circle red */
+.menu-toggle[aria-expanded="true"] {
+  background: #d32f2f; /* red */
+}
+
 .flyout-menu {
   position: absolute;
-  top: 52px;
+  top: 26px;
   left: 50%;
-  transform: translateX(-50%) scale(0.98);
+  transform: translateX(-50%) translateY(-6px) scale(0.98);
   transform-origin: top center;
   background: #ffffff;
   color: #333;
-  border-radius: 12px;
-  border: 1px solid rgba(0,0,0,0.08);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
-  padding: 8px;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 10px 10px rgba(0,0,0,0.25);
+  padding: 20px 8px 8px 8px;
   min-width: 220px;
-  display: none;
-  z-index: 1050;
+  z-index: -1;
   opacity: 0;
-  transition: opacity .16s ease, transform .16s ease;
+  visibility: hidden;
+  pointer-events: none;
+  will-change: opacity, transform;
+  transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
 }
 .flyout-menu.open {
-  display: block;
   opacity: 1;
-  transform: translateX(-50%) scale(1);
+  visibility: visible;
+  transform: translateX(-50%) translateY(0) scale(1);
+  pointer-events: auto;
+  transition: opacity .18s ease, transform .18s ease, visibility 0s linear 0s;
 }
 .flyout-item {
   width: 100%;
@@ -147,12 +155,28 @@ header {
   padding: 10px 12px;
   background: transparent;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 1.2em;
 }
 .flyout-item:hover { background: #f5f5f5; }
 .flyout-item:focus-visible { outline: 2px solid #90caf9; }
+
+/* Animate plus to an X when expanded */
+.menu-plus { 
+  transition: transform .16s ease; 
+}
+.menu-toggle[aria-expanded="true"] .menu-plus { 
+  transform: rotate(45deg) translateY(-1px); 
+}
+/* Motion sensitivity */
+@media (prefers-reduced-motion: reduce) {
+  .flyout-menu,
+  .flyout-menu.open,
+  .menu-plus,
+  .share-btn,
+  .toast { transition: none !important; }
+}
 
 #map { 
   grid-row: 2/1/3/2;
@@ -175,7 +199,10 @@ footer{
     padding: 12px 8px 8px 8px;
     font-size: 1.1em;
     line-height: 1.5em;
-    box-shadow: 0 -8px 8px rgba(0, 0, 0, 0.35);
+}
+
+.footer-content {
+  width: 100%;
 }
 
 .footer-content a {
@@ -217,7 +244,7 @@ footer{
   position: fixed;
   left: 50%;
   right: auto;
-  bottom: calc(22vh + 12px); /* align above footer area on desktop */
+  bottom: calc(24vh + 12px); /* align above footer area on desktop */
   transform: translateX(-50%);
   z-index: 1200;
   display: inline-flex;
@@ -265,43 +292,23 @@ footer{
 }
 
 @media screen and (max-width: 500px) {
-    #map {
-      width: 100vw; /* Full width on smaller screens */
-      height: 60vh; /* Adjust height for smaller screens */
-    }
+  .banner {
+    padding: 24px 0;
+  }
 
-    .banner {
-      padding: 24px 0;
-    }
+  .banner-logo {
+    width: 120px; /* Smaller logo on mobile */
+    height: auto;
+    margin-right: .25em;
+  }
 
-    .banner-logo {
-      width: 120px; /* Smaller logo on mobile */
-      height: auto;
-      margin-right: .25em;
-    }
+  .banner-text { width: auto; }
 
-    .banner-text {
-      width: auto
-    }
+  .brand { font-size: 2.4em; }
 
-    .brand {
-      font-size: 2.4em;
-    }
-
-    .subtitle {
-    font-size: 1em;
-    }
+  .subtitle { font-size: 1em; }
   
-    footer {
-      font-size: .9em;
-      height: 13vh;
-    }
-
-    .share-btn {
-      /* align above footer area on mobile */
-      bottom: calc(15vh + 12px); 
-      padding: 10px 12px;
-    }
+  /* Optional mobile overrides can go here */
 }
 
 @media screen and (max-width: 345px) {
