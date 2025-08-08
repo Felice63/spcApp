@@ -1,10 +1,11 @@
-
 // Plain JS version for Speed Camera Notifier
 
 let map = null;
 let userMarker = null;
 let cameras = [];
 const notification = document.getElementById('notification');
+const toastEl = document.getElementById('toast');
+const shareBtn = document.getElementById('shareBtn');
 
 function showNotification(msg) {
   notification.textContent = msg;
@@ -128,4 +129,62 @@ function initMap() {
   watchPosition();
 }
 
-window.onload = initMap;
+// Simple toast helper
+function showToast(message, timeout = 2200) {
+  if (!toastEl) return;
+  toastEl.textContent = message;
+  toastEl.classList.add('show');
+  window.clearTimeout(showToast._timer);
+  showToast._timer = window.setTimeout(() => {
+    toastEl.classList.remove('show');
+    toastEl.textContent = '';
+  }, timeout);
+}
+
+async function handleShare() {
+  const shareData = {
+    title: 'SpeedCarma',
+    text: 'Check out SpeedCarma – live proximity alerts for Toronto speed cameras.',
+    url: window.location.href
+  };
+  try {
+    if (navigator.share) {
+      await navigator.share(shareData);
+      // Many browsers show their own UI; toast is a nice confirmation
+      showToast('Thanks for sharing!');
+    } else {
+      // Fallback: copy URL to clipboard
+      await navigator.clipboard.writeText(shareData.url);
+      showToast('Link copied to clipboard');
+    }
+  } catch (err) {
+    // User cancelled or permission denied; degrade to copy if possible
+    try {
+      await navigator.clipboard.writeText(shareData.url);
+      showToast('Link copied to clipboard');
+    } catch (_) {
+      showToast('Unable to share');
+    }
+  }
+}
+
+function initShare() {
+  if (!shareBtn) return;
+  // Toggle label visibility based on support
+  if (!navigator.share) {
+    shareBtn.setAttribute('data-fallback', 'true');
+    shareBtn.title = 'Copy link';
+  }
+  shareBtn.addEventListener('click', handleShare);
+}
+
+function init() {
+  initMap();
+  initShare();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
