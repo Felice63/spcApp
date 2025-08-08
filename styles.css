@@ -134,8 +134,10 @@ footer{
 /* Floating Share Button */
 .share-btn {
   position: fixed;
-  right: 50%;
-  bottom: 21vh;
+  left: 50%;
+  right: auto;
+  bottom: calc(22vh + 12px); /* align above footer area on desktop */
+  transform: translateX(-50%);
   z-index: 1200;
   display: inline-flex;
   align-items: center;
@@ -151,7 +153,7 @@ footer{
   transition: transform .08s ease, box-shadow .2s ease, background .2s ease;
 }
 .share-btn:hover { box-shadow: 0 8px 18px rgba(0,0,0,0.3); }
-.share-btn:active { transform: translateY(1px); }
+.share-btn:active { transform: translateX(-50%) translateY(1px); }
 .share-icon { font-size: 18px; line-height: 1; }
 .share-label { font-weight: 600; }
 
@@ -183,18 +185,18 @@ footer{
 
 @media screen and (max-width: 500px) {
     #map {
-        width: 100vw; /* Full width on smaller screens */
-        height: 60vh; /* Adjust height for smaller screens */
+      width: 100vw; /* Full width on smaller screens */
+      height: 60vh; /* Adjust height for smaller screens */
     }
 
     .banner {
-    padding: 24px 0;
+      padding: 24px 0;
     }
 
     .banner-logo {
-        width: 120px; /* Smaller logo on mobile */
-        height: auto;
-        margin-right: .25em /* Adjust margin for smaller screens */
+      width: 120px; /* Smaller logo on mobile */
+      height: auto;
+      margin-right: .25em;
     }
 
     .banner-text {
@@ -215,7 +217,8 @@ footer{
     }
 
     .share-btn {
-      bottom: calc(13vh + 12px);
+      /* align above footer area on mobile */
+      /* bottom: calc(13vh + 12px);  */
       padding: 10px 12px;
     }
 }
