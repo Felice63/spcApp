@@ -17,8 +17,32 @@ https://www.arcgis.com/apps/mapviewer/index.html?url=https://services3.arcgis.co
 
 ### TO DO
 
-- Add a Share icon on SpeedCarma
 - FlyOut menu with other links
-- Make Mobile First if its to be a mobile app
 - Activate other Leaflet map features like trails etc. 
 - It would be a sub menu configure interface show trails parks etc other Toronto items from their data
+
+### Core Leaflet (built-in, no plugins)
+
+- Proximity radius ring: Visualize the 0.25 km threshold around the user.
+    - Add a circle that follows the user: L.circle([lat,lng], { radius: 250 })
+
+### Plugins
+
+- Marker clustering: Keep the map fast and clean when zoomed out.
+    - Plugin: Leaflet.markercluster; swap L.layerGroup of markers for a cluster group
+
+- Geocoder/Search: Find an address/intersection quickly.
+    - Plugin: Leaflet Control Geocoder; L.Control.geocoder().addTo(map)
+
+### UX/polish (small changes)
+
+- Better camera icons. Use your img/SpeedCamGlyph-* for consistent branding.
+    - Use L.icon({ iconUrl, iconSize, iconAnchor }) instead of the emoji div
+
+- Attribution/controls layout: Move/compact controls so they never overlap footer credits.
+
+### Non-Leaflet extras (tiny and safe)
+
+- PWA basics: Manifest + icons for “Add to Home Screen” (helps sharing and repeat use)
+
+If you want, I can implement any two of these right now (e.g., Scale bar + Proximity circle), then add a basemap switcher or clustering next.

@@ -15,7 +15,7 @@ body {
   /* display: flex;
   flex-direction: column; */
   display: grid;
-  grid-template-rows: 16% 62% 22%;
+  grid-template-rows: 14% 65% 21%;
   grid-template-columns: auto;
   margin: 0;
   padding: 0; 
@@ -72,6 +72,87 @@ header {
   margin-top: 0.2em;
   margin-left: 2px;
 }
+
+/* Fly-out menu (top center, under logo) */
+.menu-anchor {
+  position: relative;
+  top: -10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 1000;
+}
+.menu-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 3px solid white;
+  background: #2e7d32; /* green circle */
+  color: #fff;
+  cursor: pointer;
+  /* box-shadow: 0 4px 10px rgba(0,0,0,0.2); */
+  transition: transform .12s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.menu-toggle:hover { 
+  box-shadow: 0 6px 8px rgba(0,0,0,0.35); 
+}
+
+.menu-toggle:active { 
+  transform: translateY(1px); 
+}
+
+.menu-toggle:focus-visible { 
+  outline: 3px solid #90caf9; 
+  outline-offset: 2px; 
+}
+
+.menu-plus { 
+  font-size: 40px; 
+  line-height: 1; 
+  transform: translateY(-1px); 
+}
+
+.flyout-menu {
+  position: absolute;
+  top: 52px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.98);
+  transform-origin: top center;
+  background: #ffffff;
+  color: #333;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+  padding: 8px;
+  min-width: 220px;
+  display: none;
+  z-index: 1050;
+  opacity: 0;
+  transition: opacity .16s ease, transform .16s ease;
+}
+.flyout-menu.open {
+  display: block;
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+.flyout-item {
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.flyout-item:hover { background: #f5f5f5; }
+.flyout-item:focus-visible { outline: 2px solid #90caf9; }
 
 #map { 
   grid-row: 2/1/3/2;

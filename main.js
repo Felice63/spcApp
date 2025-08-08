@@ -6,6 +6,8 @@ let cameras = [];
 const notification = document.getElementById('notification');
 const toastEl = document.getElementById('toast');
 const shareBtn = document.getElementById('shareBtn');
+const menuToggle = document.getElementById('menuToggle');
+const flyoutMenu = document.getElementById('flyoutMenu');
 
 function showNotification(msg) {
   notification.textContent = msg;
@@ -181,10 +183,42 @@ function initShare() {
 function init() {
   initMap();
   initShare();
+  initMenu();
 }
 
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', init);
 } else {
   init();
+}
+
+// Fly-out menu logic
+function initMenu() {
+  if (!menuToggle || !flyoutMenu) return;
+
+  const setOpen = (open) => {
+    flyoutMenu.classList.toggle('open', open);
+    flyoutMenu.setAttribute('aria-hidden', String(!open));
+    menuToggle.setAttribute('aria-expanded', String(open));
+  };
+
+  const isOpen = () => flyoutMenu.classList.contains('open');
+
+  menuToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setOpen(!isOpen());
+  });
+
+  // Close on click outside
+  document.addEventListener('click', (e) => {
+    if (!isOpen()) return;
+    if (!flyoutMenu.contains(e.target) && e.target !== menuToggle) {
+      setOpen(false);
+    }
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isOpen()) setOpen(false);
+  });
 }
