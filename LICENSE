@@ -1,0 +1,59 @@
+SpeedCarma Non-Commercial License (SC-NC-1.0)
+================================================
+
+Copyright (c) 2025 fortedesign.ca
+
+1. Definitions
+	"Software" means the SpeedCarma source code, assets, and accompanying documentation in this repository, excluding Third-Party Components (defined below).
+	"Non-Commercial" means any use that is not intended for or directed toward commercial advantage or monetary compensation. Internal use inside a for‑profit company without selling, licensing, or charging for the Software itself or a derivative is considered Non-Commercial.
+
+2. Grant of Rights (Non-Commercial Only)
+	Subject to the terms of this License, you are permitted to:
+	a. Use and run the Software for Non-Commercial purposes.
+	b. Copy and redistribute the Software (in source or compiled form) for Non-Commercial purposes.
+	c. Modify, adapt, and create derivative works of the Software for Non-Commercial purposes.
+	d. Publish derivatives (source or compiled) provided they remain under this same non-commercial license (or a license no more restrictive to end users and still Non-Commercial) and retain required attribution notices.
+
+3. Restrictions
+	You MAY NOT:
+	a. Sell, resell, or offer to sell the Software or any derivative work.
+	b. Charge a fee for access to, hosting of, support for, or installation of the Software or derivative works, except for incidental costs (e.g., hosting pass-through at cost) without prior written permission from the copyright holder.
+	c. Use the Software or derivatives in a product or service for which users are charged (directly or indirectly) without explicit written permission.
+	d. Remove or obscure copyright, attribution, or license notices.
+	e. Use trademarks, logos, or branding of the copyright holder in a way that suggests endorsement without permission.
+
+4. Third-Party Components & Data
+	a. Leaflet (BSD 2-Clause), © Vladimir Agafonkin and contributors. Comply with its license when redistributing.
+	b. OpenStreetMap data © OpenStreetMap contributors, under the ODbL 1.0 (and tile usage policies). Maintain required attribution.
+	c. City of Toronto speed / red light camera data: subject to the City’s open data terms; you are responsible for compliance.
+	These Third-Party Components retain their original licenses. This License does NOT override or restrict those licenses.
+
+5. Attribution
+	All copies or substantial portions must retain: (i) this license text, (ii) copyright notice, (iii) Third-Party attributions (Leaflet, OpenStreetMap, data sources).
+
+6. Contributions
+	Unless explicitly stated otherwise, any contribution you submit is licensed under this same SC-NC-1.0 license.
+
+7. Patent Grant
+	To the extent you own patent rights that would necessarily be infringed by using the unmodified Software, you grant a worldwide, royalty-free, non-exclusive, non-transferable license to use those patents for Non-Commercial uses of the Software. No patent rights are granted for modifications or combinations beyond the Software as provided.
+
+8. Disclaimer of Warranty
+	THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT.
+
+9. Limitation of Liability
+	IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+10. Termination
+	Any breach of Section 3 terminates your rights under this License automatically. Upon termination you must cease use and destroy copies; Sections 4, 5, 8, 9 survive.
+
+11. Commercial Licensing
+	Commercial use (including SaaS, resale, paid distribution, bundled offerings, or monetized services built atop the Software) requires a separate commercial license. Contact: info@fortedesign.ca (or designated channel) to inquire.
+
+12. Not Open Source (OSI)
+	This License is source-available and Non-Commercial; it is not an OSI-approved open source license. If you need an OSI-approved option, request dual-licensing terms.
+
+---------------------------------------
+SPDX-License-Identifier: LicenseRef-SC-NC-1.0
+Third-Party Licenses: BSD-2-Clause (Leaflet), ODbL-1.0 (OpenStreetMap data)
+---------------------------------------
+
