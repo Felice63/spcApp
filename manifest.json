@@ -7,7 +7,7 @@
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#3b2726",
-  "theme_color": "#2e7d32",
+  "theme_color": "#d32f2f",
   "lang": "en-CA",
   "icons": [
     { "src": "img/SpeedCamGlyph-smallest.png", "sizes": "64x64", "type": "image/png" },

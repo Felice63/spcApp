@@ -3,6 +3,16 @@
     box-sizing: border-box;
 }
 
+:root {
+  --theme-color-red: #d32f2f;
+  --theme-color-dark: #3b2726;
+  --theme-color-mid-grey: #929292;
+  --theme-color-light-grey: #f5f5f5;
+  --theme-color-green: #2e7d32;
+  --theme-color-blue: #1976d2;
+  --warning-yellow: #ffeb3b;
+}
+
 html, body {
   height: 100%;
   margin: 0;
@@ -21,7 +31,7 @@ body {
   padding: 0; 
   min-height: 100vh;
   font-family: Arial, sans-serif;
-  background: #3b2726;
+  background: var(--theme-color-dark);
 }
 
 header {
@@ -56,18 +66,18 @@ header {
   font-size: 2.75em;
   font-weight: 700;
   letter-spacing: -1px;
-  color: #222;
+  color: var(--theme-color-dark);
   line-height: 1.1;
 }
 .brand-main {
-  color: #222;
+  color: var(--theme-color-dark);
 }
 .brand-accent {
-  color: #e53935;
+  color: var(--theme-color-red);
 }
 .subtitle {
   font-size: 1.15em;
-  color: #888;
+  color: var(--theme-color-mid-grey);
   font-style: italic;
   margin-top: 0.2em;
   margin-left: 2px;
@@ -92,10 +102,9 @@ header {
   height: 44px;
   border-radius: 50%;
   border: 3px solid white;
-  background: #2e7d32; /* green circle */
+  background: var(--theme-color-green); 
   color: #fff;
   cursor: pointer;
-  /* box-shadow: 0 4px 10px rgba(0,0,0,0.2); */
   transition: transform .12s ease, box-shadow .2s ease, background .2s ease;
 }
 
@@ -108,7 +117,7 @@ header {
 }
 
 .menu-toggle:focus-visible { 
-  outline: 3px solid #90caf9; 
+  outline: 3px solid var(--theme-color-blue); 
   outline-offset: 2px; 
 }
 
@@ -120,7 +129,7 @@ header {
 
 /* Expanded state: turn the green circle red */
 .menu-toggle[aria-expanded="true"] {
-  background: #d32f2f; /* red */
+  background: var(--theme-color-red) /* red */
 }
 
 .flyout-menu {
@@ -130,7 +139,7 @@ header {
   transform: translateX(-50%) translateY(-6px) scale(0.98);
   transform-origin: top center;
   background: #ffffff;
-  color: #333;
+  color: var(--theme-color-dark);
   border-radius: 0 0 10px 10px;
   box-shadow: 0 10px 10px rgba(0,0,0,0.25);
   padding: 20px 8px 8px 8px;
@@ -159,8 +168,12 @@ header {
   cursor: pointer;
   font-size: 1.2em;
 }
-.flyout-item:hover { background: #f5f5f5; }
-.flyout-item:focus-visible { outline: 2px solid #90caf9; }
+.flyout-item:hover { 
+  background: #f5f5f5; 
+}
+.flyout-item:focus-visible { 
+  outline: 2px solid var(--theme-color-blue);; 
+}
 
 /* Animate plus to an X when expanded */
 .menu-plus { 
@@ -206,7 +219,7 @@ footer{
 }
 
 .footer-content a {
-    color: #90caf9;
+    color: var(--theme-color-blue);
     text-decoration: none;
 }
 .footer-content a:hover {
@@ -218,7 +231,7 @@ footer{
     top: 20%;
     left: 50%;
     transform: translateX(-50%);
-    background: #ffeb3b;
+    background: var(--warning-yellow);
     padding: 1em;
     border-radius: 10px;
     display: none;
@@ -251,7 +264,7 @@ footer{
   align-items: center;
   gap: 8px;
   padding: 10px 14px;
-  background: #1976d2;
+  background: var(--theme-color-blue);
   color: #fff;
   border: none;
   border-radius: 999px;
@@ -260,13 +273,24 @@ footer{
   font-size: 16px;
   transition: transform .08s ease, box-shadow .2s ease, background .2s ease;
 }
-.share-btn:hover { box-shadow: 0 8px 18px rgba(0,0,0,0.3); }
-.share-btn:active { transform: translateX(-50%) translateY(1px); }
-.share-icon { font-size: 18px; line-height: 1; }
-.share-label { font-weight: 600; }
+.share-btn:hover { 
+  box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+ }
+.share-btn:active { 
+  transform: translateX(-50%) translateY(1px); 
+}
+.share-icon { 
+  font-size: 18px; 
+  line-height: 1; 
+}
+.share-label { 
+  font-weight: 600; 
+}
 
 /* If fallback mode (no navigator.share), show a subtle dotted underline on label */
-.share-btn[data-fallback="true"] .share-label { text-decoration: underline dotted rgba(255,255,255,0.7); }
+.share-btn[data-fallback="true"] .share-label { 
+  text-decoration: underline dotted rgba(255,255,255,0.7); 
+}
 
 /* Toast */
 .toast {
@@ -274,7 +298,7 @@ footer{
   left: 50%;
   bottom: 24px;
   transform: translateX(-50%) translateY(12px);
-  background: rgba(32, 33, 36, 0.96);
+  background: var(--theme-color-dark);
   color: #fff;
   padding: 10px 14px;
   border-radius: 8px;
