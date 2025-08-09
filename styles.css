@@ -138,7 +138,7 @@ header {
   left: 50%;
   transform: translateX(-50%) translateY(-6px) scale(0.98);
   transform-origin: top center;
-  background: #ffffff;
+  background: #fff;
   color: var(--theme-color-dark);
   border-radius: 0 0 10px 10px;
   box-shadow: 0 10px 10px rgba(0,0,0,0.25);
@@ -169,10 +169,10 @@ header {
   font-size: 1.2em;
 }
 .flyout-item:hover { 
-  background: #f5f5f5; 
+  background: var(--theme-color-light-grey);
 }
 .flyout-item:focus-visible { 
-  outline: 2px solid var(--theme-color-blue);; 
+  outline: 2px solid var(--theme-color-blue);
 }
 
 /* Animate plus to an X when expanded */
