@@ -1,5 +1,5 @@
 /* Basic Service Worker for SpeedCarma */
-const CACHE_VERSION = 'v1';
+const CACHE_VERSION = 'v2';
 const PRECACHE = `precache-${CACHE_VERSION}`;
 const RUNTIME_TILE = `tiles-${CACHE_VERSION}`;
 
@@ -13,7 +13,9 @@ const PRECACHE_URLS = [
   '/img/SpeedCamGlyph-smallest.png',
   '/img/SpeedCamGlyph-small.png',
   '/img/SpeedCamGlyph-med.png',
-  '/img/SpeedCamGlyph-large.png'
+  '/img/SpeedCamGlyph-large.png',
+  '/img/favicon.svg',
+  '/img/SpeedCamGlyph.svg'
 ];
 
 self.addEventListener('install', event => {
@@ -101,4 +103,11 @@ self.addEventListener('notificationclick', event => {
     }
     return clients.openWindow(url);
   }));
+});
+
+// Accept a skip waiting message to activate updated SW immediately
+self.addEventListener('message', event => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
 });

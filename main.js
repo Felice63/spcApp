@@ -234,21 +234,53 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(reg => {
-        // Optional: log or show a toast when updated
+        // If there's an already waiting SW, prompt immediately
         if (reg.waiting) {
-          console.log('Service worker waiting to activate');
+          notifyUpdate(reg.waiting);
         }
+
         reg.addEventListener('updatefound', () => {
           const nw = reg.installing;
           if (nw) {
             nw.addEventListener('statechange', () => {
               if (nw.state === 'installed' && navigator.serviceWorker.controller) {
-                console.log('New version of SpeedCarma available.');
+                notifyUpdate(nw);
               }
             });
           }
         });
+
+        let refreshing = false;
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          if (refreshing) return;
+            refreshing = true;
+            window.location.reload();
+        });
       })
       .catch(err => console.error('SW registration failed', err));
   });
+}
+
+function notifyUpdate(worker) {
+  // Build a lightweight action toast (reuse existing toastEl if available)
+  if (!toastEl) {
+    console.log('Update available for SpeedCarma');
+    return;
+  }
+  toastEl.innerHTML = 'New version available <button id="sw-reload-btn" style="margin-left:8px;padding:4px 10px;border:none;border-radius:4px;background:#1976d2;color:#fff;cursor:pointer;font-size:.85em;">Reload</button>';
+  toastEl.classList.add('show');
+  const btn = document.getElementById('sw-reload-btn');
+  if (btn) {
+    btn.addEventListener('click', () => {
+      // Tell waiting/installed worker to skip waiting
+      if (worker && worker.state === 'installed') {
+        worker.postMessage({ type: 'SKIP_WAITING' });
+      }
+    });
+  }
+  // Auto-hide after 15s if user ignores (but keep worker waiting until interaction)
+  window.clearTimeout(notifyUpdate._timer);
+  notifyUpdate._timer = window.setTimeout(() => {
+    toastEl.classList.remove('show');
+  }, 15000);
 }
