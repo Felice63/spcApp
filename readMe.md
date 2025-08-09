@@ -6,11 +6,11 @@ This simple Web App is a work in progress built with Vanilla Web Technologies. I
 
 Leaflet is a free, open-source JavaScript library for creating interactive maps. Leaflet  is the library that provides the map interface and functionality. To display a map, you need to use a tile provider.
 
-The tile providers may have their own terms of service and pricing. Many people use OpenStreetMap, which is also a free and open-source option. Other providers like Mapbox or Esri offer free tiers, but may charge for high usage.
+The tile providers may have their own terms of service and pricing. This Web App uses OpenStreetMap. Other providers like [Mapbox](https://www.mapbox.com/) or [Esri](https://www.esri.com/en-us/home) offer free tiers but may charge for high usage.
 
 ### OpenStreetMap
 
-OpenStreetMap (OSM) is a free, open-source online map and tile provider. Anyone can edit and contribute to the project by adding roads, buildings, parks, and other places. OSM is used in many apps, websites, and research.
+OpenStreetMap (OSM) is a free, open-source online map and tile provider. Anyone can edit and contribute to the project by adding roads, buildings, parks, and other places. OSM is used in many apps, websites, and for geographic research.
 
 
 ### Public JSON data being fetched:
@@ -65,7 +65,7 @@ This project is released under the **MIT License** (see `LICENSE`).
 
 Leaflet is © 2010–2025 Vladimir Agafonkin and contributors, under the **BSD 2-Clause License**. See the Leaflet project for full terms.
 
-Map data © OpenStreetMap contributors. You must retain proper attribution when using OpenStreetMap tiles. For details, see:[openstreetmap.org/copyright](https://www.openstreetmap.org/copyright)
+Map data © OpenStreetMap contributors. You must retain proper attribution when using OpenStreetMap tiles. For details, see: [openstreetmap.org/copyright](https://www.openstreetmap.org/copyright)
 
 City of Toronto speed & red light camera data provided via the public ArcGIS FeatureServer endpoint listed above; subject to the City's open data terms found [here](https://www.toronto.ca/city-government/data-research-maps/open-data/open-data-licence/)
 
@@ -74,7 +74,4 @@ If you redistribute or modify this app, please keep:
 - Leaflet attribution
 - OpenStreetMap attribution
 - Data source attribution (City of Toronto)
-
-Optional enhancements (if you package as a mobile app / PWA):
-- Add a NOTICE file summarizing third-party licenses.
-- Include a link to OpenStreetMap and Leaflet in an in-app “About” or settings panel.
+- Add a NOTICE file summarizing any third-party licenses.
