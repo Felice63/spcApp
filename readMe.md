@@ -1,6 +1,6 @@
 ### SpeedCarma
 
-This is a simple Web App is a work in progress, built with Vanilla Web Technologies. It uses (LeafletJS)[https://leafletjs.com/], (OpenStreetMap)[https://www.openstreetmap.org/], and the (City of Toronto public datasets)[https://www.toronto.ca/city-government/data-research-maps/open-data/].
+This simple Web App is a work in progress built with Vanilla Web Technologies. It uses [LeafletJS](https://leafletjs.com/), [OpenStreetMap](https://www.openstreetmap.org/), and the [City of Toronto public datasets](https://www.toronto.ca/city-government/data-research-maps/open-data/).
 
 ### Leaflet
 
@@ -15,20 +15,20 @@ OpenStreetMap (OSM) is a free, open-source online map and tile provider. Anyone 
 
 ### Public JSON data being fetched:
 
-This Web App uses (public facing JSON data)[https://services3.arcgis.com/b9WvedVPoizGfvfD/ArcGIS/rest/services/COT_SPEED_CAMERAS/FeatureServer/0/query?where=1%3D1%20&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=*&returnGeometry=true&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnDistinctValues=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&token=&f=json] maintained and curated bu the (City of Toronto)[https://www.toronto.ca/city-government/data-research-maps/open-data/]
+This Web App uses [public facing JSON data](https://services3.arcgis.com/b9WvedVPoizGfvfD/ArcGIS/rest/services/COT_SPEED_CAMERAS/FeatureServer/0/query?where=1%3D1%20&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=*&returnGeometry=true&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnDistinctValues=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&token=&f=json) maintained and curated by the [City of Toronto](https://www.toronto.ca/city-government/data-research-maps/open-data/)
 
 ### Feature Server Query form
 
-(Can be found here)[https://services3.arcgis.com/b9WvedVPoizGfvfD/ArcGIS/rest/services/COT_SPEED_CAMERAS/FeatureServer/0/query[]
+[Can be found here](https://services3.arcgis.com/b9WvedVPoizGfvfD/ArcGIS/rest/services/COT_SPEED_CAMERAS/FeatureServer/0/query[])
 
 
 ### Map viewer
 
-(Can be found here)[https://www.arcgis.com/apps/mapviewer/index.html?url=https://services3.arcgis.com/b9WvedVPoizGfvfD/ArcGIS/rest/services/COT_SPEED_CAMERAS/FeatureServer&source=sd]
+[Can be found here](https://www.arcgis.com/apps/mapviewer/index.html?url=https://services3.arcgis.com/b9WvedVPoizGfvfD/ArcGIS/rest/services/COT_SPEED_CAMERAS/FeatureServer&source=sd)
 
 ### Other Data provided by CoT
 
-(Can be found here)[https://services3.arcgis.com/b9WvedVPoizGfvfD/ArcGIS/rest/services/]
+[Can be found here](https://services3.arcgis.com/b9WvedVPoizGfvfD/ArcGIS/rest/services/)
 
 
 ### To Do
@@ -65,9 +65,9 @@ This project is released under the **MIT License** (see `LICENSE`).
 
 Leaflet is © 2010–2025 Vladimir Agafonkin and contributors, under the **BSD 2-Clause License**. See the Leaflet project for full terms.
 
-Map data © OpenStreetMap contributors. You must retain proper attribution when using OpenStreetMap tiles (already present in the footer attribution string). For details, see: https://www.openstreetmap.org/copyright
+Map data © OpenStreetMap contributors. You must retain proper attribution when using OpenStreetMap tiles. For details, see:[openstreetmap.org/copyright](https://www.openstreetmap.org/copyright)
 
-City of Toronto speed & red light camera data provided via the public ArcGIS FeatureServer endpoint listed above; subject to the City's open data terms found (here)[https://www.toronto.ca/city-government/data-research-maps/open-data/open-data-licence/]
+City of Toronto speed & red light camera data provided via the public ArcGIS FeatureServer endpoint listed above; subject to the City's open data terms found [here](https://www.toronto.ca/city-government/data-research-maps/open-data/open-data-licence/)
 
 If you redistribute or modify this app, please keep:
 - The MIT license text
