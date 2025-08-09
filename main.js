@@ -228,3 +228,27 @@ function initMenu() {
     if (e.key === 'Escape' && isOpen()) setOpen(false);
   });
 }
+
+// Service Worker registration (basic)
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => {
+        // Optional: log or show a toast when updated
+        if (reg.waiting) {
+          console.log('Service worker waiting to activate');
+        }
+        reg.addEventListener('updatefound', () => {
+          const nw = reg.installing;
+          if (nw) {
+            nw.addEventListener('statechange', () => {
+              if (nw.state === 'installed' && navigator.serviceWorker.controller) {
+                console.log('New version of SpeedCarma available.');
+              }
+            });
+          }
+        });
+      })
+      .catch(err => console.error('SW registration failed', err));
+  });
+}
