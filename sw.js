@@ -1,5 +1,6 @@
-/* Basic Service Worker for SpeedCarma */
-const CACHE_VERSION = 'v2';
+// Basic Service Worker for SpeedCarma
+// Remember to update the cache version when making changes
+const CACHE_VERSION = '1.1';
 const PRECACHE = `precache-${CACHE_VERSION}`;
 const RUNTIME_TILE = `tiles-${CACHE_VERSION}`;
 
