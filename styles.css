@@ -1,4 +1,7 @@
 /* Global styles for Speed Camera Notifier */
+
+/* Implement Cascade Layers and import LLeaflet styles to the base layer */
+
 * {
     box-sizing: border-box;
 }
@@ -84,16 +87,18 @@ header {
   margin-left: 2px;
 }
 
-/* Fly-out menu (top center, under logo) */
+/* Fly-out menu */
 .menu-anchor {
-  position: relative;
-  top: -10px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  z-index: 1000;
+    position: relative;
+    top: -10px;
+    right: 16px;
+    width: auto;
+    display: flex;
+    justify-content: flex-end;
+    /* align-items: flex-start; */
+    z-index: 1000;
 }
+
 .menu-toggle {
   position: relative;
   display: inline-flex;
@@ -135,9 +140,9 @@ header {
 
 .flyout-menu {
   position: absolute;
-  top: 26px;
+  top: 16px;
   left: 50%;
-  transform: translateX(-50%) translateY(-6px) scale(0.98);
+  /* transform: translateX(-50%) translateY(-6px) scale(0.98); */
   transform-origin: top center;
   background: #fff;
   color: var(--theme-color-dark);
@@ -155,7 +160,7 @@ header {
 .flyout-menu.open {
   opacity: 1;
   visibility: visible;
-  transform: translateX(-50%) translateY(0) scale(1);
+  transform: translateX(-10%) translateY(0) scale(1);
   pointer-events: auto;
   transition: opacity .18s ease, transform .18s ease, visibility 0s linear 0s;
 }
@@ -256,10 +261,8 @@ footer{
 /* Floating Share Button */
 .share-btn {
   position: fixed;
-  left: 50%;
-  right: auto;
-  bottom: calc(24vh + 12px); /* align above footer area on desktop */
-  transform: translateX(-50%);
+  left: 16px;
+  bottom: calc(24vh + 12px); /* keep vertical offset above footer */
   z-index: 1200;
   display: inline-flex;
   align-items: center;
@@ -278,7 +281,7 @@ footer{
   box-shadow: 0 8px 18px rgba(0,0,0,0.3);
  }
 .share-btn:active { 
-  transform: translateX(-50%) translateY(1px); 
+  transform: translateY(1px); 
 }
 .share-icon { 
   font-size: 18px; 
@@ -348,3 +351,33 @@ footer{
     font-size: .8em;
     }
 }
+
+  /* Leaflet Overrides */
+
+  /* Example: Style popups */
+  .leaflet-popup-content-wrapper {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    font-size: 120%;
+    line-height: 150%;
+  }
+
+  .leaflet-container a.leaflet-popup-close-button {
+    color: var(--theme-color-green);
+    font-size: 200%;
+  }
+
+  
+/*
+
+OTHER LEAFLET CLASSES
+  
+.leaflet-popup
+.leaflet-popup-content-wrapper
+.leaflet-popup-content
+.leaflet-popup-tip-container
+.leaflet-popup-tip
+.leaflet-popup-close-button
+  
+*/
