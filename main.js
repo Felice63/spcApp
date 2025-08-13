@@ -1,8 +1,9 @@
-// Plain JS version for Speed Camera Notifier
-
+// Initialize map and user marker
 let map = null;
 let userMarker = null;
 let cameras = [];
+
+// Notification elements
 const notification = document.getElementById('notification');
 const toastEl = document.getElementById('toast');
 const shareBtn = document.getElementById('shareBtn');
@@ -49,7 +50,7 @@ function checkProximity(lat, lng) {
   for (const cam of cameras) {
     const dist = getDistanceFromLatLonInKm(lat, lng, cam.lat, cam.lng);
     if (dist < threshold) {
-      showNotification(`Speed camera nearby: ${cam.LOCATION || ''}`);
+      showNotification(`Speed camera nearby: ${cam.location || ''}`);
       // Voice notification
       if (window.speechSynthesis && !checkProximity._speaking) {
         const utter = new SpeechSynthesisUtterance('Speed camera nearby');
@@ -72,7 +73,7 @@ function addCameraMarkers() {
   if (!map) return;
   cameras.forEach(cam => {
     const marker = L.marker([cam.lat, cam.lng], {
-      title: cam.LOCATION || 'Speed Camera',
+      title: cam.location || 'Speed Camera',
       icon: cameraIcon
     }).addTo(map);
     const infoContent = `
@@ -107,11 +108,12 @@ function watchPosition() {
         userMarker.setLatLng([latitude, longitude]);
         map.setView([latitude, longitude]);
       } else if (map) {
+        // User marker centred on their location
         userMarker = L.marker([latitude, longitude], {
           title: 'You are here',
           icon: L.divIcon({
             className: '',
-            html: '<div style="color:green;font-size:28px;line-height:28px;display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:white;border-radius:50%;border:4px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.2);">🚘</div>'
+            html: '<div style="color:green;font-size:20px;line-height:28px;display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:white;border-radius:50%;border:4px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.2);">🚘</div>'
           })
         }).addTo(map).bindPopup('<div class="user-info-window">You are here</div>');
         map.setView([latitude, longitude]);
@@ -129,10 +131,10 @@ function initMap() {
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
-  // Add a single test marker at the center
-  L.marker([43.7, -79.4], {
-    title: 'Test Marker'
-  }).addTo(map);
+  // Default test marker at the center
+  //L.marker([43.7, -79.4], {
+  //  title: 'Test Marker'
+  //}).addTo(map);
   fetchCameras();
   watchPosition();
 }

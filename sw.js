@@ -1,10 +1,10 @@
 // Basic Service Worker for SpeedCarma
-// Remember to update the cache version when making changes
+// Remember to update CACHE_VERSION when making changes to any of the assets listed in PRECACHE_URLS, if any new files are added to PRECACHE_URLS, remove any old files that are no longer needed. If any files that are not listed in PRECACHE_URLS are modified, you don't have to change the CACHE_VERSION value.
 const CACHE_VERSION = '1.1';
 const PRECACHE = `precache-${CACHE_VERSION}`;
 const RUNTIME_TILE = `tiles-${CACHE_VERSION}`;
 
-// Core assets to precache (add more if needed)
+// Assets to precache. Can add more if needed
 const PRECACHE_URLS = [
   '/',
   '/index.html',
@@ -16,7 +16,9 @@ const PRECACHE_URLS = [
   '/img/SpeedCamGlyph-med.png',
   '/img/SpeedCamGlyph-large.png',
   '/img/favicon.svg',
-  '/img/SpeedCamGlyph.svg'
+  '/img/SpeedCamGlyph.svg',
+  '/img/icons/icon-192.png',
+  '/img/icons/icon-512.png'
 ];
 
 self.addEventListener('install', event => {
@@ -87,8 +89,8 @@ self.addEventListener('push', event => {
   event.waitUntil(
     self.registration.showNotification(data.title || 'SpeedCarma', {
       body: data.body || '',
-      icon: 'img/SpeedCamGlyph-small.png',
-      badge: 'img/SpeedCamGlyph-smallest.png'
+  icon: 'img/SpeedCamGlyph-small.png',
+  badge: 'img/SpeedCamGlyph-smallest.png'
     })
   );
 });
