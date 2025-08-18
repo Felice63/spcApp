@@ -49,7 +49,9 @@ This PWA uses [public facing JSON data](https://services3.arcgis.com/b9WvedVPoiz
 ### UX updates
 
 - Simplify the layout.
-- For UI and layout refer to City of Toronto Waste Collection App called [Waste Wizard](https://www.toronto.ca/services-payments/recycling-organics-garbage/waste-wizard/). It's available on Google Play and Apple Store
+- For UI and layout refer to City of Toronto Waste Collection App called [Waste Wizard](https://www.toronto.ca/services-payments/recycling-organics-garbage/waste-wizard/). 
+- It's available on Google Play and Apple Store
+- Screen UI is [here](https://play.google.com/store/apps/details?id=ca.toronto.torontowastewizard&hl=en_CA)
 - Use Cascade Layers to better manage CSS specificity
 - Move controls so they do not overlap footer credits.
 - Consider making the UI less like a website and more like a WEB APP
@@ -69,7 +71,8 @@ Share reports anonymously
 
 - Help & Support                                
 Sync Data
-App Version                                   
+App Version       
+Implement AI Chatbot                            
 
 
 ### Core Leaflet (built-in, no plugins)
