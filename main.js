@@ -14,8 +14,8 @@ const flyoutMenu = document.getElementById('flyoutMenu');
 const cameraIcon = L.icon({
   iconUrl: 'img/SpeedCamGlyph.svg',
   iconRetinaUrl: 'img/SpeedCamGlyph.svg',
-  iconSize: [56, 'auto'],
-  iconAnchor: [28, 28], // center anchor so marker sits on exact lat/lng
+  iconSize: [50, 'auto'],
+  iconAnchor: [25, 25], // center anchor so marker sits on exact lat/lng
   popupAnchor: [0, -14]
 });
 
@@ -53,7 +53,7 @@ function checkProximity(lat, lng) {
       showNotification(`Speed camera nearby: ${cam.location || ''}`);
       // Voice notification
       if (window.speechSynthesis && !checkProximity._speaking) {
-        const utter = new SpeechSynthesisUtterance('Speed camera nearby');
+        const utter = new SpeechSynthesisUtterance(`Speed camera nearby, at ${cam.location}`);
         utter.rate = 1.1;
         utter.pitch = 1.0;
         utter.volume = 1.0;
@@ -113,7 +113,7 @@ function watchPosition() {
           title: 'You are here',
           icon: L.divIcon({
             className: '',
-            html: '<div style="color:green;font-size:20px;line-height:28px;display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:white;border-radius:50%;border:4px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.2);">🚘</div>'
+            html: '<div style="font-size:20px;display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:white;border-radius:50%;border:6px solid #fff;box-shadow:var(--theme-drop-shadow);">🚘</div>'
           })
         }).addTo(map).bindPopup('<div class="user-info-window">You are here</div>');
         map.setView([latitude, longitude]);
@@ -154,7 +154,7 @@ function showToast(message, timeout = 2200) {
 async function handleShare() {
   const shareData = {
     title: 'SpeedCarma',
-    text: 'Check out SpeedCarma – live proximity alerts for Toronto speed cameras.',
+    text: 'Check Out SpeedCarma | Live Proximity Alerts for Toronto Speed Cameras.',
     url: window.location.href
   };
   try {
