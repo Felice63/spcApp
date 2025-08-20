@@ -1,4 +1,4 @@
-# SpeedCarma PWA
+### SpeedCarma PWA
 
 This simple Progressive Web App is a work in progress built with Vanilla Web technologies. It uses [LeafletJS](https://leafletjs.com/), [OpenStreetMap](https://www.openstreetmap.org/), and the [City of Toronto public datasets](https://www.toronto.ca/city-government/data-research-maps/open-data/).
 
@@ -35,7 +35,7 @@ This PWA uses [public facing JSON data](https://services3.arcgis.com/b9WvedVPoiz
 
 - Add features via a drop-down or fly-out menu
 - Activate other Leaflet map features, such as trails etc. 
-- Users can customize the notifications - how many times they occur
+- Users can customize notifications - how many times they occur
 - Users can customize proximity
 - Driving Data & History: would require data storage.
 - Trip Recording: Log trips, including speed, routes, and camera encounters.
@@ -45,8 +45,6 @@ This PWA uses [public facing JSON data](https://services3.arcgis.com/b9WvedVPoiz
 - Statistics Dashboard: Provide insights (e.g., average speed, top speeding zones, alert frequency).
 
 - Camera info should show speed limit at its location
-
-### UX updates
 
 - Simplify the layout.
 - For UI and layout refer to City of Toronto Waste Collection App called [Waste Wizard](https://www.toronto.ca/services-payments/recycling-organics-garbage/waste-wizard/). 
@@ -85,23 +83,3 @@ Implement AI Chatbot
 - Marker clustering can be implemented with a Leaflet Plugin: Leaflet.markercluster which swaps `L.layerGroup` of markers for a cluster group
 
 - Search implementation to find an address or intersection can also be done with a Leaflet Plugin: Leaflet Control Geocoder `L.Control.geocoder().addTo(map)`
-
-
----
-
-### License & Attribution
-
-This project is released under the **MIT License** (see `LICENSE`).
-
-Leaflet is © 2010–2025 Vladimir Agafonkin and contributors, under the **BSD 2-Clause License**. See the Leaflet project for full terms.
-
-Map data © OpenStreetMap contributors. You must retain proper attribution when using OpenStreetMap tiles. For details, see: [openstreetmap.org/copyright](https://www.openstreetmap.org/copyright)
-
-City of Toronto speed & red light camera data provided via the public ArcGIS FeatureServer endpoint listed above; subject to the City's open data terms found [here](https://www.toronto.ca/city-government/data-research-maps/open-data/open-data-licence/)
-
-If you redistribute or modify this app, please keep:
-- The MIT license text
-- Leaflet attribution
-- OpenStreetMap attribution
-- Data source attribution (City of Toronto)
-- Add a NOTICE file summarizing any third-party licenses.
