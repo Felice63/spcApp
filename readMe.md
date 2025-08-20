@@ -1,4 +1,4 @@
-### SpeedCarma PWA
+# SpeedCarma PWA
 
 This simple Progressive Web App is a work in progress built with Vanilla Web technologies. It uses [LeafletJS](https://leafletjs.com/), [OpenStreetMap](https://www.openstreetmap.org/), and the [City of Toronto public datasets](https://www.toronto.ca/city-government/data-research-maps/open-data/).
 
