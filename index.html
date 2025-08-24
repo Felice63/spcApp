@@ -2,10 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-  <link rel="icon" href="./img/favicon.svg" type="image/svg+xml"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="manifest" href="manifest.json" crossorigin="use-credentials" />
+
+    <!-- PWA -->
     <meta name="theme-color" content="#d32f2f" />
+    <link rel="manifest" href="manifest.json" crossorigin="use-credentials" />
+
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <link rel="icon" href="./img/favicon.svg" type="image/svg+xml"/>
+
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
@@ -26,32 +33,36 @@
           </div>
         </div>
       </section>
-      <!-- Fly-out menu trigger anchored at the bottom-center of header -->
-      <div class="menu-anchor">
-        <button id="menuToggle" class="menu-toggle" type="button" aria-expanded="false" aria-controls="flyoutMenu" aria-label="Open menu" title="Menu">
-          <span class="menu-plus" aria-hidden="true">+</span>
-        </button>
-        <nav id="flyoutMenu" class="flyout-menu" role="menu" aria-hidden="true">
-          <button class="flyout-item" role="menuitem" type="button">Feature 1 coming</button>
-          <button class="flyout-item" role="menuitem" type="button">Feature 2 coming</button>
-          <button class="flyout-item" role="menuitem" type="button">Feature 3 coming</button>
-        </nav>
-      </div>
+
     </header>
 
     <div id="map"></div>
     <div id="notification"></div>
 
-    <!-- Share button and toast -->
-    <button id="shareBtn" class="share-btn" type="button" aria-label="Share this app" title="Share this app">
-      <span class="share-icon" aria-hidden="true">
-      <img src="./img/share-icon.svg" alt="">
-      </span>
-    </button>
-    <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true" aria-relevant="additions text"></div>
-
     <footer>
-      <div class="footer-content">
+      <section class="footer-content">
+
+        <!-- Toast for Notifications-->
+        <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true" aria-relevant="additions text"></div>
+
+        <!-- Share Icon -->
+        <button id="shareBtn" class="share-btn" type="button" aria-label="Share this app" title="Share this app">
+          <span class="material-symbols-outlined" aria-hidden="true">share</span>
+        </button>
+        <!-- Search Icon -->
+        <button id="searchBtn" class="search-btn" type="button" aria-label="Search" title="Search">
+          <span class="material-symbols-outlined" aria-hidden="true">search</span>
+        </button>
+        <!-- Route Icon -->
+        <button id="routeBtn" class="route-btn" type="button" aria-label="Route" title="Route">
+          <span class="material-symbols-outlined" aria-hidden="true">route</span>
+        </button>
+        <!-- Menu Icon -->
+        <button id="menuBtn" class="menu-btn" type="button" aria-label="Menu" title="Menu">
+          <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+        </button>
+
+        <!--
         <span>&copy; 
           <span id="footer-year"></span> fortedesign.ca 
         </span>
@@ -65,7 +76,9 @@
           the City of Toronto Speed & Red Light Camera Map dataset
           </a>
           </span>
-      </div>
+         -->
+        </section>
+
     </footer>
 
     <!-- Leaflet JS --><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
@@ -75,7 +88,7 @@
     <script src="./main.js"></script>
     <script>
       // Set current year in footer
-      document.getElementById('footer-year').textContent = new Date().getFullYear();
+      // document.getElementById('footer-year').textContent = new Date().getFullYear();
     </script>
   </body>
 </html>
