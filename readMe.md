@@ -1,21 +1,25 @@
-### SpeedCarma PWA
+# SpeedCarma PWA
 
 This simple Progressive Web App is a work in progress built with Vanilla Web technologies. It uses [LeafletJS](https://leafletjs.com/), [OpenStreetMap](https://www.openstreetmap.org/), and the [City of Toronto public datasets](https://www.toronto.ca/city-government/data-research-maps/open-data/).
 
-### Leaflet
+## Leaflet
 
 Leaflet is a free, open-source JavaScript library for creating interactive maps. It provides the map interface and functionality. To display a map, you need to use a tile provider.
 
 Map tile providers may have their own terms of service and pricing. This Web App uses OpenStreetMap. Other providers like [Mapbox](https://www.mapbox.com/) or [Esri](https://www.esri.com/en-us/home) offer free tiers but may charge for high usage.
 
-### OpenStreetMap
+## OpenStreetMap
 
 OpenStreetMap (OSM) is a free, open-source online map and tile provider. Anyone can edit and contribute to the project by adding roads, buildings, parks, and other places. OSM is used in many apps, websites, and for geographic research.
 
 
-### Public JSON data being fetched
+## Public JSON data being fetched
 
 This PWA uses [public facing JSON data](https://services3.arcgis.com/b9WvedVPoizGfvfD/ArcGIS/rest/services/COT_SPEED_CAMERAS/FeatureServer/0/query?where=1%3D1%20&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=*&returnGeometry=true&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnDistinctValues=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&token=&f=json) maintained and curated by the [City of Toronto](https://www.toronto.ca/city-government/data-research-maps/open-data/)
+
+### Other CoT services
+
+- [Here](https://services3.arcgis.com/b9WvedVPoizGfvfD/ArcGIS/rest/services/)
 
 ### Feature Server Query form
 
@@ -30,8 +34,25 @@ This PWA uses [public facing JSON data](https://services3.arcgis.com/b9WvedVPoiz
 
 [Can be found here](https://services3.arcgis.com/b9WvedVPoizGfvfD/ArcGIS/rest/services/)
 
+## Other Communitites in Ontario with Automated Speed Enforcement (ASE)
 
-### To Do
+[ASE Ontario](https://www.aseontario.com/ase-communities)
+
+- Brampton
+- Durham Region
+- Hamilton
+- London
+- Mississauga
+- Ottawa
+- Peel Region
+- Pickering
+- Waterloo
+- York Region
+- [Town of Newmarket](https://www.newmarket.ca/CommunitySafetyCameras)
+    - https://experience.arcgis.com/experience/64cb688957ef4ef58bf6f716761a9ffc/
+
+
+# To Do
 
 - Add features via a drop-down or fly-out menu
 - Activate other Leaflet map features, such as trails etc. 
