@@ -1,7 +1,7 @@
 {
   "name": "SpeedCarma",
   "short_name": "SpeedCarma",
-  "description": "Speed camera proximity notifier for Toronto (Leaflet-powered).",
+  "description": "Speed camera proximity notifier for the City of Toronto using the Leaflet JavaScript library and OpenStreetMap data.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
