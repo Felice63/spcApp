@@ -1,6 +1,6 @@
-/* Global styles for Speed Camera Notifier */
+/* Global styles  */
 
-/* Implement Cascade Layers and import LLeaflet styles to the base layer */
+/* Implement Cascade Layers */
 
 * {
     box-sizing: border-box;
@@ -24,7 +24,6 @@ html, body {
   padding: 0;
   min-height: 100vh;
 }
-
 
 body {
   /* display: flex;
@@ -67,6 +66,7 @@ header {
   flex-direction: column;
   justify-content: center;
 }
+
 .brand {
   font-size: 2.75em;
   font-weight: 700;
@@ -87,7 +87,6 @@ header {
   margin-top: 0.2em;
   margin-left: 2px;
 }
-
 
 /* Motion sensitivity */
 @media (prefers-reduced-motion: reduce) {
@@ -171,14 +170,69 @@ footer{
   font-weight: 600; 
 }
 
+/* Fallback mode (no navigator.share) show a dotted underline on label */
+.share-btn[data-fallback="true"] .share-label { 
+  text-decoration: underline dotted rgba(255,255,255,0.7); 
+}
+
 .material-symbols-outlined {
   font-size: 34px;
 }
 
-/* If fallback mode (no navigator.share), show a subtle dotted underline on label */
-.share-btn[data-fallback="true"] .share-label { 
-  text-decoration: underline dotted rgba(255,255,255,0.7); 
+/* spc-popup-dialog Web Component */
+spc-popup-dialog dialog {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.25);
+  max-width: 100vw;
+  background: #fff;
+  transition: opacity 0.2s;
+  position: relative;
 }
+
+.popup-component {
+  padding: 10px;
+  font-size: 1.2em;
+}
+
+spc-popup-dialog .header {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+
+  font-weight: 600;
+}
+
+spc-popup-dialog .close-btn {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    background-color: var(--theme-color-light-grey);
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 36px;
+    aspect-ratio: 1;
+}
+
+spc-popup-dialog .content {
+  padding: 0;
+}
+
+/* Slide-up animation for spc-popup-dialog */
+spc-popup-dialog dialog {
+  opacity: 0;
+  transform: translateY(100px);
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(.4,0,.2,1), transform 0.3s cubic-bezier(.4,0,.2,1);
+}
+spc-popup-dialog dialog.slide-up {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
 
 /* Toast */
 .toast {
@@ -225,8 +279,6 @@ footer{
   .subtitle { 
     font-size: 1em; 
   }
-  
-  /* Optional mobile overrides can go here */
 }
 
 @media screen and (max-width: 345px) {
@@ -241,7 +293,7 @@ footer{
 
   /* Leaflet Overrides */
 
-  /* Example: Style popups */
+  /* Leaflet Popups */
   .leaflet-popup-content-wrapper {
     background-color: #fff;
     border-radius: 10px;
