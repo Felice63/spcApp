@@ -57,27 +57,24 @@
         <button id="routeBtn" class="route-btn" type="button" aria-label="Route" title="Route">
           <span class="material-symbols-outlined" aria-hidden="true">route</span>
         </button>
-        <!-- Menu Icon -->
+
+        <!-- Menu Icon with Popup Web Component -->
         <button id="menuBtn" class="menu-btn" type="button" aria-label="Menu" title="Menu">
           <span class="material-symbols-outlined" aria-hidden="true">menu</span>
         </button>
-
-        <!--
-        <span>&copy; 
-          <span id="footer-year"></span> fortedesign.ca 
-        </span>
-        <br>
-        <a href="https://leafletjs.com/" target="_blank" rel="noopener">LeafletJS JavaScript Library</a>
-        &nbsp;|&nbsp;
-        <a href="https://www.openstreetmap.org/" target="_blank" rel="noopener">OpenStreetMap</a>
-        <br>
-        <span>Contains information licensed under Open Government Licence - Toronto.<br>Data is provided publicly by
+        <spc-popup-dialog id="menuDialog" title="SpeedCarma Info">
+          <p>Made with the <a href="https://leafletjs.com/" target="_blank" rel="noopener">LeafletJS JavaScript Library</a>
+          </p>
+          <p>Map tiles are created by <a href="https://www.openstreetmap.org/" target="_blank" rel="noopener">OpenStreetMap</a></p>
+          <p>Contains information licensed under Open Government Licence - Toronto.</p>
+          <p>Data is provided publicly by
           <a href="https://www.toronto.ca/services-payments/streets-parking-transportation/road-safety/vision-zero/safety-initiatives/automated-speed-enforcement/speed-cameras/#location=&lat=&lng=&zoom=" target="_blank" rel="noopener">
           the City of Toronto Speed & Red Light Camera Map dataset
           </a>
-          </span>
-         -->
-        </section>
+          </p>
+        </spc-popup-dialog>
+
+      </section><!--End of Footer Section-->
 
     </footer>
 
@@ -85,10 +82,22 @@
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
      crossorigin="anonymous"></script>
 
+    <script src="./spc-popup-dialog.js"></script>
     <script src="./main.js"></script>
     <script>
       // Set current year in footer
       // document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+      // Menu button opens the popup dialog
+      window.addEventListener('DOMContentLoaded', () => {
+        const menuBtn = document.getElementById('menuBtn');
+        const menuDialog = document.getElementById('menuDialog');
+        if (menuBtn && menuDialog) {
+          menuBtn.addEventListener('click', () => {
+            menuDialog.open();
+          });
+        }
+      });
     </script>
   </body>
 </html>
