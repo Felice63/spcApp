@@ -1,3 +1,13 @@
+/* Hide the geocoder's built-in search icon and always show the input field when control is visible */
+.leaflet-control-geocoder .leaflet-control-geocoder-icon {
+  display: none !important;
+}
+.leaflet-control-geocoder-expanded .leaflet-control-geocoder-form {
+  display: block !important;
+}
+.leaflet-control-geocoder .leaflet-control-geocoder-form {
+  display: block !important;
+}
 /* Global styles  */
 
 /* Implement Cascade Layers */
@@ -285,7 +295,6 @@ spc-popup-dialog dialog.slide-up {
     .banner-logo {
         width: 90px; /* Smaller logo on mobile */
     }
-
     .subtitle {
     font-size: .8em;
     }
@@ -300,6 +309,11 @@ spc-popup-dialog dialog.slide-up {
     box-shadow: var(--theme-drop-shadow);
     font-size: 120%;
     line-height: 150%;
+  }
+
+  .leaflet-container {
+    font-size: 0.8em;
+    line-height: 1.5em;
   }
 
   .leaflet-container a.leaflet-popup-close-button {
@@ -320,7 +334,18 @@ spc-popup-dialog dialog.slide-up {
 
   .leaflet-popup-content {
     font-size: 1em;
-  } 
+  }
+
+  .leaflet-control-geocoder-form input {
+    font-size: 1.5em;
+    padding: .75em;
+}
+
+.leaflet-control-geocoder-alternatives{
+   font-size: 1.3em;
+   line-height: 1.5em;
+   padding: .5em;
+}
 
 /* Custom SVG ICONS
 

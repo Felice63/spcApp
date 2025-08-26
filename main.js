@@ -130,12 +130,13 @@ function initMap() {
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
-  // Default test marker at the center
-  //L.marker([43.7, -79.4], {
-  //  title: 'Test Marker'
-  //}).addTo(map);
   fetchCameras();
   watchPosition();
+  // Initialize geocoder control but do not add to map yet
+  window._spcGeocoder = L.Control.geocoder({
+    defaultMarkGeocode: true
+  });
+  window._spcGeocoderAdded = false;
 }
 
 // Simple toast helper
@@ -190,6 +191,35 @@ function initShare() {
 function init() {
   initMap();
   initShare();
+  // Set up search button to show geocoder
+  const searchBtn = document.getElementById('searchBtn');
+  if (searchBtn) {
+    searchBtn.addEventListener('click', () => {
+      if (window._spcGeocoder && map) {
+        // Only add geocoder control once
+        if (!window._spcGeocoderAdded) {
+          window._spcGeocoder.addTo(map);
+          window._spcGeocoderAdded = true;
+        }
+        // Open the geocoder input immediately
+        const geocoderContainer = window._spcGeocoder._container;
+        if (geocoderContainer) {
+          // Find the geocoder's toggle button and simulate a click if input is not visible
+          const input = geocoderContainer.querySelector('input');
+          if (input && input.offsetParent === null) {
+            // Input is hidden, so click the toggle button
+            const toggleBtn = geocoderContainer.querySelector('button.leaflet-control-geocoder-icon');
+            if (toggleBtn) toggleBtn.click();
+          }
+          // Focus the input (in case it's now visible)
+          setTimeout(() => {
+            const inputNow = geocoderContainer.querySelector('input');
+            if (inputNow) inputNow.focus();
+          }, 0);
+        }
+      }
+    });
+  }
 }
 
 if (document.readyState === 'loading') {
