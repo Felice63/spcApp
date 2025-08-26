@@ -19,24 +19,24 @@ This PWA uses [public facing JSON data](https://services3.arcgis.com/b9WvedVPoiz
 
 ### Other CoT services
 
-- [Here](https://services3.arcgis.com/b9WvedVPoizGfvfD/ArcGIS/rest/services/)
+- [Can be found here](https://services3.arcgis.com/b9WvedVPoizGfvfD/ArcGIS/rest/services/)
 
 ### Feature Server Query form
 
-[Can be found here](https://services3.arcgis.com/b9WvedVPoizGfvfD/ArcGIS/rest/services/COT_SPEED_CAMERAS/FeatureServer/0/query)
+- [Can be found here](https://services3.arcgis.com/b9WvedVPoizGfvfD/ArcGIS/rest/services/COT_SPEED_CAMERAS/FeatureServer/0/query)
 
 
 ### Map viewer
 
-[Can be found here](https://www.arcgis.com/apps/mapviewer/index.html?url=https://services3.arcgis.com/b9WvedVPoizGfvfD/ArcGIS/rest/services/COT_SPEED_CAMERAS/FeatureServer&source=sd)
+- [Can be found here](https://www.arcgis.com/apps/mapviewer/index.html?url=https://services3.arcgis.com/b9WvedVPoizGfvfD/ArcGIS/rest/services/COT_SPEED_CAMERAS/FeatureServer&source=sd)
 
 ### Other Data provided by CoT
 
-[Can be found here](https://services3.arcgis.com/b9WvedVPoizGfvfD/ArcGIS/rest/services/)
+- [Can be found here](https://services3.arcgis.com/b9WvedVPoizGfvfD/ArcGIS/rest/services/)
 
 ## Other Communitites in Ontario with Automated Speed Enforcement (ASE)
 
-[ASE Ontario](https://www.aseontario.com/ase-communities)
+- [Link to ASE Ontario](https://www.aseontario.com/ase-communities)
 
 - Brampton
 - Durham Region
@@ -54,7 +54,8 @@ This PWA uses [public facing JSON data](https://services3.arcgis.com/b9WvedVPoiz
 
 # To Do
 
-- Add features via a drop-down or fly-out menu
+- Add Leaflet Routing Machine Plugin for route planning
+- Add Search implementation to find an address or intersection with Leaflet Control Geocoder Plugin
 - Activate other Leaflet map features, such as trails etc. 
 - Users can customize notifications - how many times they occur
 - Users can customize proximity
@@ -101,6 +102,8 @@ Implement AI Chatbot
 
 ### Plugins
 
-- Marker clustering can be implemented with a Leaflet Plugin: Leaflet.markercluster which swaps `L.layerGroup` of markers for a cluster group
+- Route planning can be doen with Routing Machine Plugin 
 
 - Search implementation to find an address or intersection can also be done with a Leaflet Plugin: Leaflet Control Geocoder `L.Control.geocoder().addTo(map)`
+
+- Marker clustering can be implemented with a Leaflet Plugin: Leaflet.markercluster which swaps `L.layerGroup` of markers for a cluster group
