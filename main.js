@@ -100,12 +100,16 @@ async function fetchCameras() {
 
 function watchPosition() {
   if (!navigator.geolocation) return;
+  let firstFix = true;
   navigator.geolocation.watchPosition(
     pos => {
       const { latitude, longitude } = pos.coords;
       if (userMarker) {
         userMarker.setLatLng([latitude, longitude]);
-        map.setView([latitude, longitude]);
+        if (firstFix) {
+          map.setView([latitude, longitude]);
+          firstFix = false;
+        }
       } else if (map) {
         // User marker centred on their location
         userMarker = L.marker([latitude, longitude], {
@@ -116,6 +120,7 @@ function watchPosition() {
           })
         }).addTo(map).bindPopup('<div class="user-info-window">You are here</div>');
         map.setView([latitude, longitude]);
+        firstFix = false;
       }
       checkProximity(latitude, longitude);
     },
@@ -217,6 +222,20 @@ function init() {
             if (inputNow) inputNow.focus();
           }, 0);
         }
+      }
+    });
+  }
+
+  // Set up locate button to center map on user's current location
+  const locateBtn = document.getElementById('locateBtn');
+  if (locateBtn) {
+    locateBtn.addEventListener('click', () => {
+      if (userMarker && map) {
+        const latlng = userMarker.getLatLng();
+        map.setView(latlng, map.getZoom());
+        showToast('Centered on your location');
+      } else {
+        showToast('User location not available');
       }
     });
   }
