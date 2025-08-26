@@ -1,6 +1,6 @@
 // Basic Service Worker for SpeedCarma
 // Remember to update CACHE_VERSION when making changes to any of the assets listed in PRECACHE_URLS, if any new files are added to PRECACHE_URLS, remove any old files that are no longer needed. If any files that are not listed in PRECACHE_URLS are modified, you don't have to change the CACHE_VERSION value.
-const CACHE_VERSION = '1.2.5'; // Increment this when you change any of the assets in PRECACHE_URLS
+const CACHE_VERSION = '1.2.6'; // Increment this when you change any of the assets in PRECACHE_URLS
 const PRECACHE = `precache-${CACHE_VERSION}`;
 const RUNTIME_TILE = `tiles-${CACHE_VERSION}`;
 

@@ -1,13 +1,3 @@
-/* Hide the geocoder's built-in search icon and always show the input field when control is visible */
-.leaflet-control-geocoder .leaflet-control-geocoder-icon {
-  display: none !important;
-}
-.leaflet-control-geocoder-expanded .leaflet-control-geocoder-form {
-  display: block !important;
-}
-.leaflet-control-geocoder .leaflet-control-geocoder-form {
-  display: block !important;
-}
 /* Global styles  */
 
 /* Implement Cascade Layers */
@@ -128,7 +118,7 @@ footer{
 .footer-content {
     display: flex;
     justify-content: center;
-    gap: 3em;
+    gap: 2em;
 }
 
 #notification {
@@ -291,6 +281,53 @@ spc-popup-dialog dialog.slide-up {
   }
 }
 
+/* Location Permission Prompt Styles */
+.location-permission {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.55);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.location-permission-content {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  padding: 2.5em 2em 2em 2em;
+  max-width: 90vw;
+  text-align: center;
+  color: var(--theme-color-dark);
+}
+.location-permission-content h2 {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  color: var(--theme-color-blue);
+}
+.location-permission-content p {
+  margin-bottom: 1.5em;
+  color: var(--theme-color-mid-grey);
+}
+.location-permission-content .locate-btn {
+  margin-top: 0.5em;
+  font-size: 1.1em;
+  padding: 0.7em 2em;
+  border-radius: 8px;
+  background: var(--theme-color-blue);
+  color: #fff;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.location-permission-content .locate-btn:hover {
+  background: var(--theme-color-dark);
+}
+
 @media screen and (max-width: 345px) {
     .banner-logo {
         width: 90px; /* Smaller logo on mobile */
@@ -345,6 +382,21 @@ spc-popup-dialog dialog.slide-up {
    font-size: 1.3em;
    line-height: 1.5em;
    padding: .5em;
+}
+
+.leaflet-right {
+    right: 1em;
+}
+
+/* Hide the geocoder's built-in search icon and always show the input field when control is visible */
+.leaflet-control-geocoder .leaflet-control-geocoder-icon {
+  display: none !important;
+}
+.leaflet-control-geocoder-expanded .leaflet-control-geocoder-form {
+  display: block !important;
+}
+.leaflet-control-geocoder .leaflet-control-geocoder-form {
+  display: block !important;
 }
 
 /* Custom SVG ICONS
