@@ -159,7 +159,7 @@ footer{
 }
 
 /* Google Material Icons in the footer */
-.share-btn, .search-btn, .route-btn, .menu-btn {
+.share-btn, .search-btn, .route-btn, .menu-btn, .locate-btn {
     width: 36px;
     height: 36px;
     bottom: calc(3vh + 8px);
@@ -172,7 +172,7 @@ footer{
     background-color: var(--theme-color-dark);
     transition: transform .08s ease, box-shadow .2s ease, background .2s ease;
 }
-.share-btn:hover, .search-btn:hover, .route-btn:hover, .menu-btn:hover { 
+.share-btn:hover, .search-btn:hover, .route-btn:hover, .menu-btn:hover, .locate-btn:hover { 
   color: var(--theme-color-light-blue);
 }
 
