@@ -2,6 +2,7 @@
 let map = null;
 let userMarker = null;
 let cameras = [];
+let locationPermissionPrompted = false;
 
 // Notification elements
 const notification = document.getElementById('notification');
@@ -98,11 +99,12 @@ async function fetchCameras() {
   addCameraMarkers();
 }
 
-function watchPosition() {
+function watchPosition(triggeredByUser = false) {
   if (!navigator.geolocation) return;
   let firstFix = true;
   navigator.geolocation.watchPosition(
     pos => {
+      hideLocationPermissionPrompt();
       const { latitude, longitude } = pos.coords;
       if (userMarker) {
         userMarker.setLatLng([latitude, longitude]);
@@ -124,9 +126,24 @@ function watchPosition() {
       }
       checkProximity(latitude, longitude);
     },
-    err => console.error(err),
+    err => {
+      if (!locationPermissionPrompted && (err.code === 1 || err.code === 2 || err.code === 3)) {
+        showLocationPermissionPrompt();
+        locationPermissionPrompted = true;
+      }
+      console.error(err);
+    },
     { enableHighAccuracy: true, maximumAge: 10000, timeout: 5000 }
   );
+}
+
+function showLocationPermissionPrompt() {
+  const el = document.getElementById('location-permission');
+  if (el) el.style.display = 'flex';
+}
+function hideLocationPermissionPrompt() {
+  const el = document.getElementById('location-permission');
+  if (el) el.style.display = 'none';
 }
 
 
@@ -196,6 +213,7 @@ function initShare() {
 function init() {
   initMap();
   initShare();
+
   // Set up search button to show geocoder
   const searchBtn = document.getElementById('searchBtn');
   if (searchBtn) {
@@ -235,8 +253,37 @@ function init() {
         map.setView(latlng, map.getZoom());
         showToast('Centered on your location');
       } else {
-        showToast('User location not available');
+        // If no userMarker, try to trigger geolocation (will prompt if not granted)
+        showLocationPermissionPrompt();
+        // Optionally, try to get location again
+        watchPosition(true);
       }
+    });
+  }
+
+  // Set up enable location button in permission prompt
+  const enableLocationBtn = document.getElementById('enableLocationBtn');
+  if (enableLocationBtn) {
+    enableLocationBtn.addEventListener('click', () => {
+      hideLocationPermissionPrompt();
+      // Try to get location again (will prompt if not granted)
+      watchPosition(true);
+    });
+  }
+
+  // Check geolocation permission on load and show prompt if needed
+  if (navigator.permissions) {
+    navigator.permissions.query({ name: 'geolocation' }).then(result => {
+      if (result.state === 'denied' || result.state === 'prompt') {
+        showLocationPermissionPrompt();
+      }
+      result.onchange = function() {
+        if (result.state === 'granted') {
+          hideLocationPermissionPrompt();
+        } else {
+          showLocationPermissionPrompt();
+        }
+      };
     });
   }
 }
