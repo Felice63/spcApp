@@ -54,8 +54,11 @@ This PWA uses [public facing JSON data](https://services3.arcgis.com/b9WvedVPoiz
 
 # To Do
 
+- Add Search implementation with Leaflet Control Geocoder Plugin
 - Add Leaflet Routing Machine Plugin for route planning
-- Add Search implementation to find an address or intersection with Leaflet Control Geocoder Plugin
+
+- Consider turning off automatically centering the user's location and use a "Show my location" button
+
 - Activate other Leaflet map features, such as trails etc. 
 - Users can customize notifications - how many times they occur
 - Users can customize proximity
