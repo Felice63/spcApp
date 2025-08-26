@@ -361,6 +361,9 @@ spc-popup-dialog dialog.slide-up {
     text-align: center;
     width: 28px;
     height: 28px;
+    position: absolute;
+    top: -8px;
+    right: -8px;
   }
 
   .leaflet-marker-icon,
