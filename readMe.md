@@ -55,6 +55,11 @@ This PWA uses [public facing JSON data](https://services3.arcgis.com/b9WvedVPoiz
 # To Do
 
 - Add OpenRouteService for route planning
+- Will need a `.env` file for local development.
+- ORS needs an API key (free) 
+- The `.env`will store the API key for local development
+- When uploading to Github `.gitignore` the `.env`
+- Add the ORS API key to vercel Environment Variables and redeploy.
 
 - Activate other Leaflet map features, such as trails etc. 
 - Users can customize notifications - how many times they occur
