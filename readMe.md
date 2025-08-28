@@ -54,10 +54,13 @@ This PWA uses [public facing JSON data](https://services3.arcgis.com/b9WvedVPoiz
 
 # To Do
 
-- Add OpenRouteService for route planning
+- Added `Leaflet-control-geocoder` for search functionality
+- The `Leaflet Routing Machine` plugin for route planning is written by the same developerL per Liedman
+- Will need to get a route server because the plugi uses its own for demo purposes and will not function properly in production
+- Add OpenRouteService (ORS) for route planning
+- Need an API key. They have a free tier for low to medium calls.
 - Will need a `.env` file for local development.
-- ORS needs an API key (free) 
-- The `.env`will store the API key for local development
+- The `.env` will store the API key for local development
 - When uploading to Github `.gitignore` the `.env`
 - Add the ORS API key to vercel Environment Variables and redeploy.
 
