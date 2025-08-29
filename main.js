@@ -1,8 +1,132 @@
-// Initialize map and user marker
+// Initialize map, user marker, and routing
 let map = null;
 let userMarker = null;
 let cameras = [];
 let locationPermissionPrompted = false;
+let routingControl = null;
+let routingMode = false;
+let routePoints = [];
+// Helper: get API key from .env if available (for dev), or from window/global
+function getORSApiKey() {
+  // In production, you may want to inject this securely
+  return window.ORS_API_KEY || '';
+}
+// Helper: count cameras near a route polyline
+function countCamerasOnRoute(routeLine, thresholdMeters = 100) {
+  if (!routeLine || !cameras.length) return 0;
+  let count = 0;
+  cameras.forEach(cam => {
+    const camLatLng = L.latLng(cam.lat, cam.lng);
+    // Find min distance from camera to any segment of the route
+    let minDist = Infinity;
+    for (let i = 0; i < routeLine.length - 1; i++) {
+      const segStart = L.latLng(routeLine[i][0], routeLine[i][1]);
+      const segEnd = L.latLng(routeLine[i+1][0], routeLine[i+1][1]);
+      const dist = L.GeometryUtil ? L.GeometryUtil.distanceSegment(map, camLatLng, segStart, segEnd) : camLatLng.distanceTo(segStart);
+      if (dist < minDist) minDist = dist;
+    }
+    if (minDist <= thresholdMeters) count++;
+  });
+  return count;
+}
+// Routing: let user select start/end points, then show route and count cameras
+function enableRoutingMode() {
+  if (!map) return;
+  routingMode = true;
+  routePoints = [];
+  showToast('Click the map to select a starting point.');
+  map.on('click', onMapClickForRoute);
+}
+
+function onMapClickForRoute(e) {
+  routePoints.push([e.latlng.lat, e.latlng.lng]);
+  if (routePoints.length === 1) {
+    showToast('Click the map to select an ending point.');
+  } else if (routePoints.length === 2) {
+    map.off('click', onMapClickForRoute);
+    showToast('Calculating route...');
+    showRoute(routePoints[0], routePoints[1]);
+    routingMode = false;
+  }
+}
+
+function showRoute(start, end) {
+  // Remove previous route if any
+  if (routingControl) {
+    map.removeLayer(routingControl);
+    routingControl = null;
+  }
+  // Remove any existing directions panel
+  const existingPanel = document.querySelector('.custom-directions-panel');
+  if (existingPanel) {
+    existingPanel.remove();
+  }
+  // Call backend proxy for ORS route
+  const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    ? 'http://localhost:3001/api/route'
+    : '/api/route';
+  fetch(apiUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ coordinates: [start, end], profile: 'driving-car' })
+  })
+    .then(res => res.json())
+    .then(data => {
+      if (!data || !data.features || !data.features[0]) {
+        showToast('No route found.', 3000);
+        return;
+      }
+      const coords = data.features[0].geometry.coordinates.map(([lng, lat]) => [lat, lng]);
+      routingControl = L.polyline(coords, { color: '#1976d2', weight: 6 }).addTo(map);
+      map.fitBounds(routingControl.getBounds(), { padding: [40, 40] });
+      const camCount = countCamerasOnRoute(coords);
+      
+      // Create custom directions panel
+      const segment = data.features[0].properties.segments[0];
+      const steps = segment.steps || [];
+      const summary = segment.summary || {};
+      
+      const panel = document.createElement('div');
+      panel.className = 'custom-directions-panel leaflet-routing-container';
+      panel.innerHTML = `
+        <div class="leaflet-routing-close">×</div>
+        <div class="leaflet-routing-header">
+          <div>Distance: ${(summary.distance / 1000).toFixed(1)} km</div>
+          <div>Duration: ${Math.round(summary.duration / 60)} min</div>
+          <div>Speed cameras: ${camCount}</div>
+        </div>
+        <div class="leaflet-routing-alt">
+          ${steps.map((step, idx) => `
+            <div class="leaflet-routing-instruction">
+              <div class="leaflet-routing-instruction-text">${step.instruction}</div>
+              <div class="leaflet-routing-instruction-distance">${(step.distance / 1000).toFixed(2)} km</div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+      
+      // Position and style the panel
+      panel.style.position = 'absolute';
+      panel.style.top = '120px';
+      panel.style.right = '20px';
+      panel.style.zIndex = '1000';
+      panel.style.maxHeight = '60vh';
+      panel.style.overflowY = 'auto';
+      
+      // Add close button functionality
+      panel.querySelector('.leaflet-routing-close').addEventListener('click', () => {
+        if (routingControl && map) {
+          map.removeLayer(routingControl);
+          routingControl = null;
+        }
+        panel.remove();
+      });
+      
+      document.body.appendChild(panel);
+      showToast(`Route found.<br>Number of speed cameras encountered on route: ${camCount}`, 0);
+    })
+    .catch(() => showToast('Error contacting routing service.', 3000));
+}
 
 // Notification elements
 const notification = document.getElementById('notification');
@@ -164,13 +288,29 @@ function initMap() {
 // Simple toast helper
 function showToast(message, timeout = 2200) {
   if (!toastEl) return;
-  toastEl.textContent = message;
-  toastEl.classList.add('show');
-  window.clearTimeout(showToast._timer);
-  showToast._timer = window.setTimeout(() => {
-    toastEl.classList.remove('show');
-    toastEl.textContent = '';
-  }, timeout);
+  // If timeout is 0, make persistent with close button
+  if (timeout === 0) {
+    toastEl.innerHTML = `<button id="toast-close-btn" class="toast-close-btn">×</button><p>${message}</p>`;
+    toastEl.classList.add('show');
+    window.clearTimeout(showToast._timer);
+    setTimeout(() => {
+      const closeBtn = document.getElementById('toast-close-btn');
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+          toastEl.classList.remove('show');
+          toastEl.innerHTML = '';
+        });
+      }
+    }, 0);
+  } else {
+    toastEl.textContent = message;
+    toastEl.classList.add('show');
+    window.clearTimeout(showToast._timer);
+    showToast._timer = window.setTimeout(() => {
+      toastEl.classList.remove('show');
+      toastEl.textContent = '';
+    }, timeout);
+  }
 }
 
 async function handleShare() {
@@ -213,6 +353,13 @@ function initShare() {
 function init() {
   initMap();
   initShare();
+  // Set up route button to enable routing mode
+  const routeBtn = document.getElementById('routeBtn');
+  if (routeBtn) {
+    routeBtn.addEventListener('click', () => {
+      enableRoutingMode();
+    });
+  }
 
   // Set up search button to show geocoder
   const searchBtn = document.getElementById('searchBtn');
