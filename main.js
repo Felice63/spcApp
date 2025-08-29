@@ -91,8 +91,10 @@ function showRoute(start, end) {
       panel.innerHTML = `
         <div class="leaflet-routing-close">×</div>
         <div class="leaflet-routing-header">
+          <!--
           <div>Distance: ${(summary.distance / 1000).toFixed(1)} km</div>
           <div>Duration: ${Math.round(summary.duration / 60)} min</div>
+          -->
           <div>Speed cameras: ${camCount}</div>
         </div>
         <div class="leaflet-routing-alt">
@@ -108,7 +110,7 @@ function showRoute(start, end) {
       // Position and style the panel
       panel.style.position = 'absolute';
       panel.style.top = '120px';
-      panel.style.right = '20px';
+      panel.style.right = '38px';
       panel.style.zIndex = '1000';
       panel.style.maxHeight = '60vh';
       panel.style.overflowY = 'auto';

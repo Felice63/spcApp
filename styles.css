@@ -433,7 +433,7 @@ spc-popup-dialog dialog.slide-up {
   border-radius: 8px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.18);
   padding: 12px 8px 8px 8px;
-  max-width: 95vw;
+  width: 80vw;
   font-size: 1.1em;
   z-index: 1200;
 }
@@ -443,7 +443,12 @@ spc-popup-dialog dialog.slide-up {
 .custom-directions-panel .leaflet-routing-alt {
   display: block !important;
   margin-top: 10px;
+  max-height: 80%;
 }
+
+.leaflet-routing-alt {
+  padding: 14px;
+} 
 
 /* Style for custom directions panel */
 .custom-directions-panel .leaflet-routing-close {
@@ -468,6 +473,11 @@ spc-popup-dialog dialog.slide-up {
   margin-bottom: 10px;
   padding-bottom: 8px;
   border-bottom: 1px solid #eee;
+}
+
+.leaflet-routing-header {
+  font-size: 1.4em;
+  padding: 14px;
 }
 
 .custom-directions-panel .leaflet-routing-instruction {
