@@ -1,4 +1,5 @@
 // Vercel serverless function to proxy OpenRouteService routing requests securely
+// Updated to include environment variable debugging
 const axios = require('axios');
 
 module.exports = async (req, res) => {
