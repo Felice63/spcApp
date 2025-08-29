@@ -7,15 +7,35 @@ module.exports = async (req, res) => {
     return;
   }
 
-  const { coordinates, profile = 'driving-car' } = req.body;
-  const ORS_API_KEY = process.env.ORS_API_KEY;
-
-  if (!ORS_API_KEY) {
-    res.status(500).json({ error: 'ORS API key not set in environment variables' });
-    return;
-  }
-
   try {
+    const ORS_API_KEY = process.env.ORS_API_KEY;
+    if (!ORS_API_KEY) {
+      res.status(500).json({ error: 'ORS API key not set in environment variables' });
+      return;
+    }
+
+    // Accept coordinates from frontend and ensure [lng, lat] order
+    const profile = req.body.profile || 'driving-car';
+    let coordinates = req.body.coordinates;
+    
+    if (!Array.isArray(coordinates) || coordinates.length < 2) {
+      res.status(400).json({ error: 'Invalid coordinates' });
+      return;
+    }
+
+    // If coordinates are [lat, lng], swap to [lng, lat]
+    coordinates = coordinates.map(coord => {
+      if (Array.isArray(coord) && coord.length === 2) {
+        // If latitude is in the range of Toronto, swap
+        if (coord[0] > 40 && coord[0] < 45 && coord[1] < -70 && coord[1] > -90) {
+          return [coord[1], coord[0]];
+        }
+        // If already [lng, lat], leave as is
+        return coord;
+      }
+      throw new Error('Invalid coordinate format');
+    });
+
     const orsUrl = `https://api.openrouteservice.org/v2/directions/${profile}/geojson`;
     const orsRes = await axios.post(
       orsUrl,
@@ -29,6 +49,10 @@ module.exports = async (req, res) => {
     );
     res.status(200).json(orsRes.data);
   } catch (err) {
-    res.status(500).json({ error: err.toString() });
+    console.error('ORS error:', err.response?.data || err.message);
+    res.status(500).json({ 
+      error: 'ORS routing failed', 
+      details: err.response?.data || err.message 
+    });
   }
 };
