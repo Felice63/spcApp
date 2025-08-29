@@ -112,7 +112,7 @@ function showRoute(start, end) {
       panel.style.top = '120px';
       panel.style.right = '38px';
       panel.style.zIndex = '1000';
-      panel.style.maxHeight = '60vh';
+      panel.style.maxHeight = '56vh';
       panel.style.overflowY = 'auto';
       
       // Add close button functionality
