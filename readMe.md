@@ -63,6 +63,7 @@ This PWA uses [public facing JSON data](https://services3.arcgis.com/b9WvedVPoiz
 - The `.env` will store the API key for local development
 - When uploading to Github `.gitignore` the `.env`
 - Add the ORS API key to vercel Environment Variables and redeploy.
+- May need to rewrite some code for Vecel? 
 
 - Activate other Leaflet map features, such as trails etc. 
 - Users can customize notifications - how many times they occur
@@ -115,3 +116,28 @@ Implement AI Chatbot
 - Search implementation to find an address or intersection can also be done with a Leaflet Plugin: Leaflet Control Geocoder `L.Control.geocoder().addTo(map)`
 
 - Marker clustering can be implemented with a Leaflet Plugin: Leaflet.markercluster which swaps `L.layerGroup` of markers for a cluster group
+
+
+## Local Development & Running the ORS Proxy
+
+1. **Add your own ORS API key to a `.env` file in the project root:**
+    ```
+    ORS_API_KEY=your-actual-ors-api-key-here
+    ```
+
+2. **Install backend dependencies:**
+    ```
+    npm install express axios cors dotenv
+    ```
+
+3. **Start the local proxy server:**
+    ```
+    node server.js
+    ```
+
+4. **Start your frontend (e.g., with Live Server or similar):**
+    - Open `index.html` in your browser, or use a local server.
+
+5. **The app will automatically use the local proxy for routing when running on localhost.**
+
+6. **For production, deploy to Vercel and set the `ORS_API_KEY` as an environment variable in your Vercel project settings.**
