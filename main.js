@@ -56,8 +56,12 @@ function showRoute(start, end) {
     map.removeLayer(routingControl);
     routingControl = null;
   }
+  // Remove any existing directions panel
+  const existingPanel = document.querySelector('.custom-directions-panel');
+  if (existingPanel) {
+    existingPanel.remove();
+  }
   // Call backend proxy for ORS route
-  // Use local proxy if running on localhost, else use relative path for production
   const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
     ? 'http://localhost:3001/api/route'
     : '/api/route';
@@ -76,37 +80,50 @@ function showRoute(start, end) {
       routingControl = L.polyline(coords, { color: '#1976d2', weight: 6 }).addTo(map);
       map.fitBounds(routingControl.getBounds(), { padding: [40, 40] });
       const camCount = countCamerasOnRoute(coords);
-      showToast(`Route found.<br>Number of speed cameras encountered on route: ${camCount}`, 0);
-      // Add a close button overlay (since no container now)
-      setTimeout(() => {
-        let closeBtn = document.querySelector('.routing-close-btn');
-        if (!closeBtn) {
-          closeBtn = document.createElement('button');
-          closeBtn.innerHTML = '×';
-          closeBtn.className = 'routing-close-btn';
-          closeBtn.title = 'Close route panel';
-          closeBtn.style.position = 'fixed';
-          closeBtn.style.top = '120px';
-          closeBtn.style.right = '32px';
-          closeBtn.style.background = '#d32f2f';
-          closeBtn.style.color = '#fff';
-          closeBtn.style.border = 'none';
-          closeBtn.style.borderRadius = '50%';
-          closeBtn.style.width = '28px';
-          closeBtn.style.height = '28px';
-          closeBtn.style.fontSize = '1.5em';
-          closeBtn.style.cursor = 'pointer';
-          closeBtn.style.zIndex = '9999';
-          closeBtn.addEventListener('click', () => {
-            if (routingControl && map) {
-              map.removeLayer(routingControl);
-              routingControl = null;
-            }
-            closeBtn.remove();
-          });
-          document.body.appendChild(closeBtn);
+      
+      // Create custom directions panel
+      const segment = data.features[0].properties.segments[0];
+      const steps = segment.steps || [];
+      const summary = segment.summary || {};
+      
+      const panel = document.createElement('div');
+      panel.className = 'custom-directions-panel leaflet-routing-container';
+      panel.innerHTML = `
+        <div class="leaflet-routing-close">×</div>
+        <div class="leaflet-routing-header">
+          <div>Distance: ${(summary.distance / 1000).toFixed(1)} km</div>
+          <div>Duration: ${Math.round(summary.duration / 60)} min</div>
+          <div>Speed cameras: ${camCount}</div>
+        </div>
+        <div class="leaflet-routing-alt">
+          ${steps.map((step, idx) => `
+            <div class="leaflet-routing-instruction">
+              <div class="leaflet-routing-instruction-text">${step.instruction}</div>
+              <div class="leaflet-routing-instruction-distance">${(step.distance / 1000).toFixed(2)} km</div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+      
+      // Position and style the panel
+      panel.style.position = 'absolute';
+      panel.style.top = '120px';
+      panel.style.right = '20px';
+      panel.style.zIndex = '1000';
+      panel.style.maxHeight = '60vh';
+      panel.style.overflowY = 'auto';
+      
+      // Add close button functionality
+      panel.querySelector('.leaflet-routing-close').addEventListener('click', () => {
+        if (routingControl && map) {
+          map.removeLayer(routingControl);
+          routingControl = null;
         }
-      }, 100);
+        panel.remove();
+      });
+      
+      document.body.appendChild(panel);
+      showToast(`Route found.<br>Number of speed cameras encountered on route: ${camCount}`, 0);
     })
     .catch(() => showToast('Error contacting routing service.', 3000));
 }

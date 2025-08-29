@@ -235,7 +235,6 @@ spc-popup-dialog dialog.slide-up {
   pointer-events: auto;
 }
 
-
 /* Toast */
 /* Toast base styles */
 .toast {
@@ -425,10 +424,69 @@ spc-popup-dialog dialog.slide-up {
   display: block !important;
 }
 /* Do not hide the routing control container contents */
-leaflet-routing-container-hide {
+
+/* Ensure the Leaflet Routing Machine container is visible and styled */
+.leaflet-routing-container, .custom-directions-panel {
   display: block !important;
-  opacity: 1 !important;
-  visibility: visible !important;
+  background: #fff;
+  color: #222;
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  padding: 12px 8px 8px 8px;
+  max-width: 95vw;
+  font-size: 1.1em;
+  z-index: 1200;
+}
+
+/* Make sure the steps list is visible */
+.leaflet-routing-container .leaflet-routing-alt,
+.custom-directions-panel .leaflet-routing-alt {
+  display: block !important;
+  margin-top: 10px;
+}
+
+/* Style for custom directions panel */
+.custom-directions-panel .leaflet-routing-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #d32f2f;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  line-height: 22px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.custom-directions-panel .leaflet-routing-header {
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.custom-directions-panel .leaflet-routing-instruction {
+  padding: 6px 0;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.custom-directions-panel .leaflet-routing-instruction-text {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.custom-directions-panel .leaflet-routing-instruction-distance {
+  font-size: 0.9em;
+  color: #666;
+  font-weight: bold;
 }
 
 /* Custom SVG ICONS
