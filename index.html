@@ -7,7 +7,6 @@
     <!-- https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Manifest -->
     <link rel="manifest" href="manifest.json" crossorigin="use-credentials" />
 
-
     <!-- PWA -->
     <meta name="theme-color" content="#d32f2f" />
     <link rel="manifest" href="manifest.json" crossorigin="use-credentials" />
@@ -100,16 +99,23 @@
 
     </footer>
 
-    <!-- Leaflet JS --><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
      crossorigin="anonymous"></script>
 
-  <!-- Leaflet Routing Machine JS -->
-  <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
-  <!-- Leaflet Control Geocoder JS -->
+    <!-- Leaflet Routing Machine JS -->
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    
+    <!-- Leaflet Control Geocoder JS -->
   <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+  <!-- OpenRouteService plugin for Leaflet Routing Machine -->
+  <script src="https://unpkg.com/leaflet-routing-openrouteservice/dist/leaflet-routing-openrouteservice.umd.js"></script>
+
     <script src="./spc-popup-dialog.js"></script>
+
     <script src="./main.js"></script>
+
     <script>
       // Set current year in footer
       // document.getElementById('footer-year').textContent = new Date().getFullYear();
