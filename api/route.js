@@ -9,7 +9,14 @@ module.exports = async (req, res) => {
   }
 
   try {
+    // Debug: Log all environment variables (remove in production)
+    console.log('Available env vars:', Object.keys(process.env));
+    console.log('NODE_ENV:', process.env.NODE_ENV);
+    
     const ORS_API_KEY = process.env.ORS_API_KEY;
+    console.log('ORS_API_KEY exists:', !!ORS_API_KEY);
+    console.log('ORS_API_KEY length:', ORS_API_KEY ? ORS_API_KEY.length : 'undefined');
+    
     if (!ORS_API_KEY) {
       console.error('ORS_API_KEY not found in environment variables');
       res.status(500).json({ error: 'ORS API key not set in environment variables' });
