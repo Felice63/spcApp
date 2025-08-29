@@ -52,57 +52,41 @@ This PWA uses [public facing JSON data](https://services3.arcgis.com/b9WvedVPoiz
     - https://experience.arcgis.com/experience/64cb688957ef4ef58bf6f716761a9ffc/
 
 
+# Done
+
+- Added [Leaflet Control Geocoder](https://github.com/perliedman/leaflet-control-geocoder) for search functionality
+- Added [Leaflet Routing Machine](https://www.liedman.net/leaflet-routing-machine/) plugin for route planning which is written by the same developer [Per Liedman](https://www.liedman.net/)
+- Note that the plugin uses its own route server for demo purposes and will not function properly in production
+- Acquired OpenRouteService (ORS) for route planning
+- You will need your own API key from ORS. They have a free tier for low to medium calls
+- Added `.env` file for local development to store the API key for local development
+- When uploading to Github the `.env` will be  `.gitignored` 
+- Added the ORS API key to vercel Environment Variables and deployed.
+
 # To Do
 
-- Added `Leaflet-control-geocoder` for search functionality
-- The `Leaflet Routing Machine` plugin for route planning is written by the same developerL per Liedman
-- Will need to get a route server because the plugi uses its own for demo purposes and will not function properly in production
-- Add OpenRouteService (ORS) for route planning
-- Need an API key. They have a free tier for low to medium calls.
-- Will need a `.env` file for local development.
-- The `.env` will store the API key for local development
-- When uploading to Github `.gitignore` the `.env`
-- Add the ORS API key to vercel Environment Variables and redeploy.
-- May need to rewrite some code for Vecel? 
-
+- The Route Planner should also accept street name inputs for starting and ending points
 - Activate other Leaflet map features, such as trails etc. 
 - Users can customize notifications - how many times they occur
-- Users can customize proximity
-- Driving Data & History: would require data storage.
-- Trip Recording: Log trips, including speed, routes, and camera encounters.
-- If data storage is implemented then it would need a Privacy Statement. All data stays local or anonymized (no GPS tracking sent to servers).
-
+- Users can customize proximity of speed cameras
+- Should include a Privacy Statement about all data staying local or anonymized (no GPS tracking sent to servers).
 - The Alert can be closed or muted
 - Statistics Dashboard: Provide insights (e.g., average speed, top speeding zones, alert frequency).
-
 - Camera info should show speed limit at its location
-
-- Simplify the layout.
-- For UI and layout refer to City of Toronto Waste Collection App called [Waste Wizard](https://www.toronto.ca/services-payments/recycling-organics-garbage/waste-wizard/). 
-- It's available on Google Play and Apple Store
-- Screen UI is [here](https://play.google.com/store/apps/details?id=ca.toronto.torontowastewizard&hl=en_CA)
 - Use Cascade Layers to better manage CSS specificity
-- Move controls so they do not overlap footer credits.
 - Consider making the UI less like a website and more like a WEB APP
-- Remove Big Hero Header Banner and Footer with all the credits
-- Refer to APPS and their UI. Link icons in the footer, settings etc
 
 ### Settings for app behavior, alerts, and privacy.
 
 - Alert Settings:                                 
 Customize Distance
 Voice Alerts on or off
-Alert Type: Visual only Audio only, both visual and audio
-
-- Privacy Settings                              
-Save trip history: On                        
-Share reports anonymously                    
+Alert Type: Visual only Audio only, both visual and audio                
 
 - Help & Support                                
 Sync Data
 App Version       
 Implement AI Chatbot                            
-
 
 ### Core Leaflet (built-in, no plugins)
 
@@ -111,33 +95,33 @@ Implement AI Chatbot
 
 ### Plugins
 
-- Route planning can be doen with Routing Machine Plugin 
-
-- Search implementation to find an address or intersection can also be done with a Leaflet Plugin: Leaflet Control Geocoder `L.Control.geocoder().addTo(map)`
-
 - Marker clustering can be implemented with a Leaflet Plugin: Leaflet.markercluster which swaps `L.layerGroup` of markers for a cluster group
 
 
 ## Local Development & Running the ORS Proxy
 
 1. **Add your own ORS API key to a `.env` file in the project root:**
+
     ```
     ORS_API_KEY=your-actual-ors-api-key-here
     ```
 
 2. **Install backend dependencies:**
+
     ```
     npm install express axios cors dotenv
     ```
 
 3. **Start the local proxy server:**
+
     ```
     node server.js
     ```
 
 4. **Start your frontend (e.g., with Live Server or similar):**
+
     - Open `index.html` in your browser, or use a local server.
 
 5. **The app will automatically use the local proxy for routing when running on localhost.**
 
-6. **For production, deploy to Vercel and set the `ORS_API_KEY` as an environment variable in your Vercel project settings.**
+6. **For production, deploy to Vercel and set the `ORS_API_KEY` as an environment variable in your Vercel PRODUCTION settings.**

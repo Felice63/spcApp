@@ -109,10 +109,10 @@ function showRoute(start, end) {
       
       // Position and style the panel
       panel.style.position = 'absolute';
-      panel.style.top = '120px';
+      panel.style.top = '114px';
       panel.style.right = '38px';
       panel.style.zIndex = '1000';
-      panel.style.maxHeight = '56vh';
+      panel.style.maxHeight = '22vh';
       panel.style.overflowY = 'auto';
       
       // Add close button functionality
@@ -125,7 +125,7 @@ function showRoute(start, end) {
       });
       
       document.body.appendChild(panel);
-      showToast(`Route found.<br>Number of speed cameras encountered on route: ${camCount}`, 0);
+      showToast(`Number of speed cameras encountered en route: ${camCount}`, 0);
     })
     .catch(() => showToast('Error contacting routing service.', 3000));
 }
