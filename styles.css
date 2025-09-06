@@ -240,8 +240,7 @@ spc-popup-dialog dialog.slide-up {
 .toast {
   position: fixed;
   left: 50%;
-  /* bottom: 50px; */
-  bottom: 100px;
+  bottom: 90px;
   transform: translateX(-50%) translateY(12px);
   background: var(--theme-color-dark);
   color: #fff;
@@ -253,7 +252,9 @@ spc-popup-dialog dialog.slide-up {
   pointer-events: none;
   transition: opacity .18s ease, transform .18s ease;
   width: 80vw;
+  height: 100px;
   text-align: center;
+  /* border: 1px solid red; */
 }
 /* When toast is visible, enable pointer events so close button is clickable */
 .toast.show {
