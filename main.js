@@ -77,7 +77,7 @@ function showRoute(start, end) {
         return;
       }
       const coords = data.features[0].geometry.coordinates.map(([lng, lat]) => [lat, lng]);
-      routingControl = L.polyline(coords, { color: '#1976d2', weight: 6 }).addTo(map);
+      routingControl = L.polyline(coords, { color: 'var(--theme-color-red)', weight: 6 }).addTo(map);
       map.fitBounds(routingControl.getBounds(), { padding: [40, 40] });
       const camCount = countCamerasOnRoute(coords);
       
@@ -94,8 +94,10 @@ function showRoute(start, end) {
           <!--
           <div>Distance: ${(summary.distance / 1000).toFixed(1)} km</div>
           <div>Duration: ${Math.round(summary.duration / 60)} min</div>
-          -->
           <div>Speed cameras: ${camCount}</div>
+          -->
+          <div>Optimal Route:</div>
+
         </div>
         <div class="leaflet-routing-alt">
           ${steps.map((step, idx) => `
@@ -107,14 +109,14 @@ function showRoute(start, end) {
         </div>
       `;
       
-      // Position and style the panel
+      /* Position and style the panel
       panel.style.position = 'absolute';
-      panel.style.top = '114px';
-      panel.style.right = '38px';
+      panel.style.top = '100px';
+      panel.style.right = '11px';
       panel.style.zIndex = '1000';
-      panel.style.maxHeight = '22vh';
+      panel.style.maxHeight = '62vh';
       panel.style.overflowY = 'auto';
-      
+      */
       // Add close button functionality
       panel.querySelector('.leaflet-routing-close').addEventListener('click', () => {
         if (routingControl && map) {
