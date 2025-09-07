@@ -125,3 +125,16 @@ Implement AI Chatbot
 5. **The app will automatically use the local proxy for routing when running on localhost.**
 
 6. **For production, deploy to Vercel and set the `ORS_API_KEY` as an environment variable in your Vercel PRODUCTION settings.**
+
+To update packages:
+
+`npm update`
+
+
+Upgrade dependencies to their latest versions:
+
+`
+npm install -g npm-check-updates
+ncu -u
+npm install
+`
