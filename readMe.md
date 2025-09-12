@@ -66,6 +66,7 @@ This PWA uses [public facing JSON data](https://services3.arcgis.com/b9WvedVPoiz
 
 # To Do
 
+- Vercel has [AI SDK](https://ai-sdk.dev/docs/foundations/prompts) for implementing AI into an app.
 - At some point have the end user choose to subscribe for updates via push notifications.
 - Will need a DB for this. Turso can be used to store the user data.
 - A DB would also be needed if the ability to save and store commonly traveled routes is implemented. Maybe this feature could be implemented for users who donated a nominal amount.
