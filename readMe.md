@@ -65,12 +65,13 @@ This PWA uses [public facing JSON data](https://services3.arcgis.com/b9WvedVPoiz
 
 # To Do
 
-- The Route Planner should also accept street name inputs for starting and ending points
-- Activate other Leaflet map features, such as trails etc. 
+- The camera location alert notification should be able to be closed. Maybe do this with the `popover api`?
+- The Route Planner should accept street name inputs for starting and ending points
+- The ability to save routs could be implemented
 - Users can customize notifications - how many times they occur
 - Users can customize proximity of speed cameras
 - Should include a Privacy Statement about all data staying local or anonymized (no GPS tracking sent to servers).
-- The Alert can be closed or muted
+
 - Statistics Dashboard: Provide insights (e.g., average speed, top speeding zones, alert frequency).
 - Camera info should show speed limit at its location
 - Use Cascade Layers to better manage CSS specificity
