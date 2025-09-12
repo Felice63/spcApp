@@ -147,13 +147,30 @@ const cameraIcon = L.icon({
   popupAnchor: [0, -14]
 });
 
+
 function showNotification(msg) {
-  notification.textContent = msg;
-  notification.style.display = 'block';
+  if (!notification) return;
+  // Add close button and message
+  notification.innerHTML = `<button id="notification-close-btn">&times;</button><span>${msg}</span>`;
+  if (typeof notification.showPopover === 'function') {
+    notification.showPopover();
+  } else {
+    notification.style.display = 'block'; // fallback
+  }
+  // Add close button handler
+  const closeBtn = document.getElementById('notification-close-btn');
+  if (closeBtn) {
+    closeBtn.onclick = hideNotification;
+  }
 }
 
 function hideNotification() {
-  notification.style.display = 'none';
+  if (!notification) return;
+  if (typeof notification.hidePopover === 'function') {
+    notification.hidePopover();
+  } else {
+    notification.style.display = 'none'; // fallback
+  }
 }
 
 function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
@@ -174,7 +191,7 @@ function deg2rad(deg) {
 
 // Proximity of User to Speed Cameras triggers the notification
 function checkProximity(lat, lng) {
-  const threshold = 0.125; // km
+  const threshold = 1000.125; // km
   for (const cam of cameras) {
     const dist = getDistanceFromLatLonInKm(lat, lng, cam.lat, cam.lng);
     if (dist < threshold) {
