@@ -54,6 +54,7 @@ This PWA uses [public facing JSON data](https://services3.arcgis.com/b9WvedVPoiz
 
 # Done
 
+- The location alert notification can now be closed using the `popover api`.
 - Added [Leaflet Control Geocoder](https://github.com/perliedman/leaflet-control-geocoder) for search functionality
 - Added [Leaflet Routing Machine](https://www.liedman.net/leaflet-routing-machine/) plugin for route planning which is written by the same developer [Per Liedman](https://www.liedman.net/)
 - Note that the plugin uses its own route server for demo purposes and will not function properly in production
@@ -65,9 +66,12 @@ This PWA uses [public facing JSON data](https://services3.arcgis.com/b9WvedVPoiz
 
 # To Do
 
-- The camera location alert notification should be able to be closed. Maybe do this with the `popover api`?
+- At some point have the end user choose to subscribe for updates via push notifications.
+- Will need a DB for this. Turso can be used to store the user data.
+- Update the UI to accept donations to keep the app updated and send a donation to Leaflet dev.
+- Can also put info about the app developer.
 - The Route Planner should accept street name inputs for starting and ending points
-- The ability to save routs could be implemented
+- The ability to save routes could be implemented
 - Users can customize notifications - how many times they occur
 - Users can customize proximity of speed cameras
 - Should include a Privacy Statement about all data staying local or anonymized (no GPS tracking sent to servers).
