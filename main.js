@@ -191,7 +191,7 @@ function deg2rad(deg) {
 
 // Proximity of User to Speed Cameras triggers the notification
 function checkProximity(lat, lng) {
-  const threshold = 1000.125; // km
+  const threshold = 0.125; // km
   for (const cam of cameras) {
     const dist = getDistanceFromLatLonInKm(lat, lng, cam.lat, cam.lng);
     if (dist < threshold) {
