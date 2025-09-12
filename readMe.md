@@ -68,8 +68,9 @@ This PWA uses [public facing JSON data](https://services3.arcgis.com/b9WvedVPoiz
 
 - At some point have the end user choose to subscribe for updates via push notifications.
 - Will need a DB for this. Turso can be used to store the user data.
-- Update the UI to accept donations to keep the app updated and send a donation to Leaflet dev.
-- Can also put info about the app developer.
+- A DB would also be needed if the ability to save and store commonly traveled routes is implemented. Maybe this feature could be implemented for users who donated a nominal amount.
+- Update the UI to accept donations to keep the app updated.
+- Would also need to show info about the app developer.
 - The Route Planner should accept street name inputs for starting and ending points
 - The ability to save routes could be implemented
 - Users can customize notifications - how many times they occur
