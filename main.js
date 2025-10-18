@@ -195,7 +195,7 @@ function checkProximity(lat, lng) {
   for (const cam of cameras) {
     const dist = getDistanceFromLatLonInKm(lat, lng, cam.lat, cam.lng);
     if (dist < threshold) {
-      showNotification(`Speed camera nearby: ${cam.location || ''}`);
+      showNotification(`${cam.Status} speed camera nearby: ${cam.location || ''}`);
       // Voice notification
       if (window.speechSynthesis && !checkProximity._speaking) {
         const utter = new SpeechSynthesisUtterance(`${cam.status || cam.Status || cam.STATUS || ''} speed camera nearby, at ${cam.location}`);

@@ -209,7 +209,7 @@ spc-popup-dialog dialog.slide-up {
 /* Toast */
 .toast {
   position: fixed;
-  left: 68%;
+  left: 70%;
   bottom: 90px;
   transform: translateX(-50%) translateY(12px);
   background: var(--theme-color-dark);
@@ -221,7 +221,7 @@ spc-popup-dialog dialog.slide-up {
   /* opacity: 0; */
   /* pointer-events: none; */
   transition: opacity .18s ease, transform .18s ease;
-  width: 68vw;
+  width: 60dvw;
   /* height: 100px; */
   /* text-align: center; */
   /* border: 1px solid red; */
@@ -471,12 +471,12 @@ spc-popup-dialog dialog.slide-up {
   top: 100px;
   right: 0;
   background: #fff;
-  color: #222;
-  /* border-radius: 8px; */
+  color: var(--theme-color-dark);
+  border-radius: var(--theme-border-radius);
   box-shadow: 0 4px 24px rgba(0,0,0,0.18);
   padding: 12px 8px 8px 8px;
-  opacity: .8;
-  width: 66dvw;
+  /* opacity: .75; */
+  width: 60dvw;
   height: 74dvh;
   /* overflow-y: auto; */
   font-size: 1.1em;
@@ -486,13 +486,15 @@ spc-popup-dialog dialog.slide-up {
 /* Make sure the steps list is visible */
 .leaflet-routing-container .leaflet-routing-alt,
 .custom-directions-panel .leaflet-routing-alt {
-  display: block !important;
-  margin-top: 10px;
-  max-height: 80%;
+  display: flex;
+  flex-direction: column;
+  /* margin-top: 10px; */
+  max-height: 100%;
 }
 
 .leaflet-routing-alt {
-  padding: 14px;
+  padding: 0 14px;
+  margin: 0;
 } 
 
 /* Style for custom directions panel */
@@ -515,7 +517,7 @@ spc-popup-dialog dialog.slide-up {
 
 .custom-directions-panel .leaflet-routing-header {
   font-weight: bold;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   padding-bottom: 8px;
   border-bottom: 1px solid #eee;
 }
