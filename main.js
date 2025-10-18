@@ -198,7 +198,7 @@ function checkProximity(lat, lng) {
       showNotification(`Speed camera nearby: ${cam.location || ''}`);
       // Voice notification
       if (window.speechSynthesis && !checkProximity._speaking) {
-        const utter = new SpeechSynthesisUtterance(`${cam.status} speed camera nearby, at ${cam.location}`);
+        const utter = new SpeechSynthesisUtterance(`${cam.status || cam.Status || cam.STATUS || ''} speed camera nearby, at ${cam.location}`);
         utter.rate = 1.1;
         utter.pitch = 1.0;
         utter.volume = 1.0;
