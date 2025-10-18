@@ -468,7 +468,7 @@ spc-popup-dialog dialog.slide-up {
 .leaflet-routing-container, .custom-directions-panel {
   display: block !important;
   position: absolute;
-  top: 100px;
+  top: 340px;
   right: 0;
   background: #fff;
   color: var(--theme-color-dark);
@@ -477,7 +477,7 @@ spc-popup-dialog dialog.slide-up {
   padding: 12px 8px 8px 8px;
   /* opacity: .75; */
   width: 60dvw;
-  height: 74dvh;
+  height: 36dvh;
   /* overflow-y: auto; */
   font-size: 1.1em;
   z-index: 1000;
